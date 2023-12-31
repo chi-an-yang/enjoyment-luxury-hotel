@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# Typescript 30 酒店訂房網
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Github flow
+1. 從主 repo fork 一份到自己 repo 底下
+2. 在自己的 fork repo 開分支出來開發，不限制分支命名
+3. 在主 repo 建立 PR (pull request)，根據開發內容決定 PR 要對應的是 master 還是 feature
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 下載專案
+1. 從主 repo fork 一份到自己 repository
+2. 透過 git clone 下載到 local
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git clone git@github.com:{你的 github username}/enjoyment-luxury-hotel.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 安裝
+- Node.js 版本需求：16.16.0+
+- 本專案使用 pnpm 建立，用 yarn/npm 也可以。
+
+```bash
+pnpm install
+```
+
+## 開發
+- 啟動服務，預設頁面是 http://127.0.0.1:3022
+
+```bash
+pnpm run dev
+```
