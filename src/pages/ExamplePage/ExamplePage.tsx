@@ -1,5 +1,6 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
 import MuiComponents from './components/MuiComponents';
+import ModalComponents from './components/ModalComponents';
 import ReactQueryComponent from './components/ReactQueryComponent';
 import SwiperComponent from './components/SwiperComponent';
 
@@ -14,6 +15,8 @@ const ExamplePage = () => {
         <ReactQueryComponent />
         <Divider textAlign="center">Swiper</Divider>
         <SwiperComponent />
+        <Divider textAlign="center">Modal</Divider>
+        <ModalComponents />
       </Stack>
     </Container>
   );
