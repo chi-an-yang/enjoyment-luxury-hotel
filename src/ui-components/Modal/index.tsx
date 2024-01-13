@@ -23,6 +23,7 @@ const ModalComponent: React.FC<IModalComponent> = ({
   submitTxt,
   hideTitleCloseBtn,
   hideFooter,
+  cannotCloseManually,
   submitAction = () => {},
   closeCondition = () => {},
 }) => {
@@ -54,7 +55,7 @@ const ModalComponent: React.FC<IModalComponent> = ({
       {/* Modal */}
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={!cannotCloseManually ? handleClose : () => {}}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >

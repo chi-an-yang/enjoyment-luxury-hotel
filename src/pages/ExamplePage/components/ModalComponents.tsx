@@ -22,6 +22,7 @@ const ModalComponents = () => {
         btnTxt="讀取／特殊功能彈窗"
         hideTitleCloseBtn={true}
         hideFooter={true}
+        cannotCloseManually={true}
         closeCondition={(timeoutCallBack: (closeModal: boolean) => void): () => void => {
           const timerId = setTimeout(() => {
             timeoutCallBack(false);

@@ -9,6 +9,7 @@ interface IModalComponent {
   submitTxt?: string;
   hideTitleCloseBtn?: boolean;
   hideFooter?: boolean;
+  cannotCloseManually?: boolean;
   submitAction?: () => void;
   closeCondition?: (callback: () => void) => (closeModal: boolean) => void;
 }
