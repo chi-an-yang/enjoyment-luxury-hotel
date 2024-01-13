@@ -7,8 +7,9 @@ import LoginPage from './pages/LoginPage';
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" index element={<ExamplePage />} />
-      <Route path="/home" index element={<HomePage />} />
+      {/* example 等用不掉的時候可直接刪掉 */}
+      <Route path="/example" index element={<ExamplePage />} />
+      <Route path="/" index element={<HomePage />} />
       <Route path="/login" index element={<LoginPage />} />
     </Routes>
   );
