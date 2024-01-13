@@ -10,7 +10,7 @@
 
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
+import { MdCameraAlt } from 'react-icons/md';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -22,6 +22,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import { SvgIcon } from '@mui/material';
 
 function Copyright() {
   return (
@@ -43,7 +44,9 @@ export default function HomePage() {
     <>
       <AppBar position="relative">
         <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
+          <SvgIcon>
+            <MdCameraAlt sx={{ mr: 2 }} />
+          </SvgIcon>
           <Typography variant="h6" color="inherit" noWrap>
             Album layout
           </Typography>

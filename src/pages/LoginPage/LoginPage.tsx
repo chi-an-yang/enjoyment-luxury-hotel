@@ -19,8 +19,9 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { MdLockOutline } from 'react-icons/md';
 import Typography from '@mui/material/Typography';
+import { SvgIcon } from '@mui/material';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Copyright(props: any) {
@@ -75,7 +76,9 @@ export default function LoginPage() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+              <SvgIcon>
+                <MdLockOutline />
+              </SvgIcon>
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
