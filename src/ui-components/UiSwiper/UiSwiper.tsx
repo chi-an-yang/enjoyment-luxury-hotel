@@ -7,13 +7,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-interface ItemsProps {
+interface UiSwiperItemsProps {
   src: string;
   name: string;
 }
 
 interface UiSwiperProps {
-  items: ItemsProps[];
+  items: UiSwiperItemsProps[];
   navigation?: boolean;
 }
 
