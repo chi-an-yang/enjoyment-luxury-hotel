@@ -1,5 +1,4 @@
 import { Stack, Typography, Button, TextField, Link } from '@mui/material';
-import theme from '@src/theme';
 import InputField from '@src/ui-components/InputField';
 
 const MuiComponents = () => {
