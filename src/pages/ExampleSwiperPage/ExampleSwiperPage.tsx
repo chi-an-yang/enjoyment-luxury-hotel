@@ -1,14 +1,14 @@
 import { Container, Box } from '@mui/material';
 import UiSwiper from '@src/ui-components/UiSwiper';
-import Hero01 from '@src/assets/heros/hero_01.jpg';
-import Hero02 from '@src/assets/heros/hero_02.jpg';
-import Hero03 from '@src/assets/heros/hero_03.jpg';
-import Hero04 from '@src/assets/heros/hero_04.jpg';
-import Hero05 from '@src/assets/heros/hero_05.jpg';
-import Hero06 from '@src/assets/heros/hero_06.jpg';
-import Hero07 from '@src/assets/heros/hero_07.jpg';
-import Hero08 from '@src/assets/heros/hero_08.jpg';
-import Hero09 from '@src/assets/heros/hero_09.jpg';
+import Hero01 from '@src/assets/images/heros/hero_01.jpg';
+import Hero02 from '@src/assets/images/heros/hero_02.jpg';
+import Hero03 from '@src/assets/images/heros/hero_03.jpg';
+import Hero04 from '@src/assets/images/heros/hero_04.jpg';
+import Hero05 from '@src/assets/images/heros/hero_05.jpg';
+import Hero06 from '@src/assets/images/heros/hero_06.jpg';
+import Hero07 from '@src/assets/images/heros/hero_07.jpg';
+import Hero08 from '@src/assets/images/heros/hero_08.jpg';
+import Hero09 from '@src/assets/images/heros/hero_09.jpg';
 
 interface IHerosList {
   src: string;
