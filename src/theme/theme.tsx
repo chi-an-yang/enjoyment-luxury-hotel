@@ -35,6 +35,14 @@ declare module '@mui/material/styles' {
 
   interface Palette {
     primary: Palette['primary'];
+    hotelPrimary: {
+      120: string;
+      100: string;
+      80: string;
+      60: string;
+      40: string;
+      10: string;
+    };
     neutral: {
       bgcolor: string;
       100: string;
@@ -48,6 +56,14 @@ declare module '@mui/material/styles' {
 
   interface PaletteOptions {
     primary?: PaletteOptions['primary'];
+    hotelPrimary: {
+      120: string;
+      100: string;
+      80: string;
+      60: string;
+      40: string;
+      10: string;
+    };
     neutral: {
       bgcolor: string;
       100: string;
@@ -84,6 +100,14 @@ const palette: ThemeOptions['palette'] = {
     main: '#BF9D7D',
     dark: '#7B6651',
     contrastText: '#fff',
+  },
+  hotelPrimary: {
+    120: '#7B6651',
+    100: '#BF9D7D',
+    80: '#AE9984',
+    60: '#E1D1C2',
+    40: '#F1EAE4',
+    10: '#F7F2EE',
   },
   neutral: {
     bgcolor: '#140F0A',
