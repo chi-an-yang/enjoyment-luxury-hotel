@@ -7,19 +7,19 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-interface IItems {
+interface ItemsProps {
   src: string;
   name: string;
 }
 
-interface IUiSwiper {
-  items: IItems[];
+interface UiSwiperProps {
+  items: ItemsProps[];
   navigation?: boolean;
 }
 
-const UiSwiper: React.FC<IUiSwiper> = ({ items, navigation = false }) => {
+const UiSwiper = ({ items, navigation = false }: UiSwiperProps) => {
   const { palette } = useTheme();
-  const UiSwiperStyle = {
+  const uiSwiperStyle = {
     '.swiper': {
       width: '100%',
       height: '100%',
@@ -83,7 +83,7 @@ const UiSwiper: React.FC<IUiSwiper> = ({ items, navigation = false }) => {
     },
   };
   return (
-    <Box width={'100%'} height={'100%'} sx={UiSwiperStyle}>
+    <Box width={'100%'} height={'100%'} sx={uiSwiperStyle}>
       <Swiper
         slidesPerView={1}
         loop={true}

@@ -60,7 +60,7 @@ const ExamplePage = () => {
         <UiSwiper items={herosList} />
       </Box>
       <Box width={773} height={457} borderRadius={'20px 0px 0px 20px'} overflow={'hidden'}>
-        <UiSwiper items={herosList} navigation={true} />
+        <UiSwiper items={herosList} navigation />
       </Box>
     </Container>
   );
