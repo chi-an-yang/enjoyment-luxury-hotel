@@ -2,8 +2,47 @@ import { outlinedInputClasses } from '@mui/material';
 import { ThemeOptions, createTheme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    Display_100px_B: React.CSSProperties;
+    H1_48px_B: React.CSSProperties;
+    H2_40px_B: React.CSSProperties;
+    H3_32px_B: React.CSSProperties;
+    H4_28px_B: React.CSSProperties;
+    H5_24px_B: React.CSSProperties;
+    H6_20px_B: React.CSSProperties;
+    Title_16px_B: React.CSSProperties;
+    Subtitle_14px_B: React.CSSProperties;
+    Body_16px_R: React.CSSProperties;
+    Body2_14px_R: React.CSSProperties;
+    Tiny_12px_R: React.CSSProperties;
+  }
+
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    Display_100px_B?: React.CSSProperties;
+    H1_48px_B?: React.CSSProperties;
+    H2_40px_B?: React.CSSProperties;
+    H3_32px_B?: React.CSSProperties;
+    H4_28px_B?: React.CSSProperties;
+    H5_24px_B?: React.CSSProperties;
+    H6_20px_B?: React.CSSProperties;
+    Title_16px_B?: React.CSSProperties;
+    Subtitle_14px_B?: React.CSSProperties;
+    Body_16px_R?: React.CSSProperties;
+    Body2_14px_R?: React.CSSProperties;
+    Tiny_12px_R?: React.CSSProperties;
+  }
+
   interface Palette {
     primary: Palette['primary'];
+    hotelPrimary: {
+      120: string;
+      100: string;
+      80: string;
+      60: string;
+      40: string;
+      10: string;
+    };
     neutral: {
       bgcolor: string;
       100: string;
@@ -17,6 +56,14 @@ declare module '@mui/material/styles' {
 
   interface PaletteOptions {
     primary?: PaletteOptions['primary'];
+    hotelPrimary: {
+      120: string;
+      100: string;
+      80: string;
+      60: string;
+      40: string;
+      10: string;
+    };
     neutral: {
       bgcolor: string;
       100: string;
@@ -29,12 +76,38 @@ declare module '@mui/material/styles' {
   }
 }
 
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    Display_100px_B: true;
+    H1_48px_B: true;
+    H2_40px_B: true;
+    H3_32px_B: true;
+    H4_28px_B: true;
+    H5_24px_B: true;
+    H6_20px_B: true;
+    Title_16px_B: true;
+    Subtitle_14px_B: true;
+    Body_16px_R: true;
+    Body2_14px_R: true;
+    Tiny_12px_R: true;
+  }
+}
+
 const palette: ThemeOptions['palette'] = {
   primary: {
     light: '#AE9984',
     main: '#BF9D7D',
     dark: '#7B6651',
     contrastText: '#fff',
+  },
+  hotelPrimary: {
+    120: '#7B6651',
+    100: '#BF9D7D',
+    80: '#AE9984',
+    60: '#E1D1C2',
+    40: '#F1EAE4',
+    10: '#F7F2EE',
   },
   neutral: {
     bgcolor: '#140F0A',
@@ -106,6 +179,69 @@ const components: ThemeOptions['components'] = {
 const theme: ThemeOptions = createTheme({
   typography: {
     fontFamily: 'Noto Serif TC',
+
+    // 依照設計稿擴充 variant
+    // https://mui.com/material-ui/customization/typography/#adding-amp-disabling-variants
+    Display_100px_B: {
+      fontWeight: 700,
+      fontSize: 100,
+      lineHeight: '120px',
+    },
+    H1_48px_B: {
+      fontWeight: 700,
+      fontSize: 48,
+      lineHeight: '57.6px',
+    },
+    H2_40px_B: {
+      fontWeight: 700,
+      fontSize: 40,
+      lineHeight: '48px',
+    },
+    H3_32px_B: {
+      fontWeight: 700,
+      fontSize: 32,
+      lineHeight: '38.4px',
+    },
+    H4_28px_B: {
+      fontWeight: 700,
+      fontSize: 28,
+      lineHeight: '33.6px',
+    },
+    H5_24px_B: {
+      fontWeight: 700,
+      fontSize: 24,
+      lineHeight: '28.8px',
+    },
+    H6_20px_B: {
+      fontWeight: 700,
+      fontSize: 20,
+      lineHeight: '24px',
+    },
+    Title_16px_B: {
+      fontWeight: 700,
+      fontSize: 16,
+      lineHeight: '24px',
+    },
+    Subtitle_14px_B: {
+      fontWeight: 700,
+      fontSize: 14,
+      lineHeight: '21px',
+    },
+    Body_16px_R: {
+      fontWeight: 500,
+      fontSize: 16,
+      lineHeight: '24px',
+    },
+    Body2_14px_R: {
+      fontWeight: 500,
+      fontSize: 14,
+      lineHeight: '21px',
+    },
+    Tiny_12px_R: {
+      fontWeight: 500,
+      fontSize: 12,
+      lineHeight: '18px',
+    },
   },
   palette,
   components,
