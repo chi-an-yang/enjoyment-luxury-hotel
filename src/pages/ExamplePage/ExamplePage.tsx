@@ -1,6 +1,7 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
 import MuiComponents from './components/MuiComponents';
 import ReactQueryComponent from './components/ReactQueryComponent';
+import SelectorComponents from './components/SelectorComponents';
 import SwiperComponent from './components/SwiperComponent';
 import Footer from '@src/common/Footer';
 import HotelTypography from './components/HotelTypography';
@@ -24,6 +25,9 @@ const ExamplePage = () => {
           <Divider textAlign="center">Swiper</Divider>
           <SwiperComponent />
 
+          <Divider textAlign="center">Selector</Divider>
+          <SelectorComponents />
+          
         </Stack>
       </Container>
       <Divider textAlign="center">Footer</Divider>
