@@ -8,9 +8,11 @@
 // [DEMO](https://mui.com/material-ui/getting-started/templates/album/)
 // [Source code](https://github.com/mui/material-ui/blob/v5.15.3/docs/data/material/getting-started/templates/album/Album.tsx)
 
-import AppBar from '@mui/material/AppBar';
+// import AppBar from '@mui/material/AppBar';
+// import { MdCameraAlt } from 'react-icons/md';
+// import Toolbar from '@mui/material/Toolbar';
+// import { SvgIcon } from '@mui/material';
 import Button from '@mui/material/Button';
-import { MdCameraAlt } from 'react-icons/md';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -18,11 +20,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import { SvgIcon } from '@mui/material';
+import Navbar from '@src/common/Navbar';
 
 function Copyright() {
   return (
@@ -42,16 +43,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function HomePage() {
   return (
     <>
-      <AppBar position="relative">
-        <Toolbar>
-          <SvgIcon>
-            <MdCameraAlt sx={{ mr: 2 }} />
-          </SvgIcon>
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Navbar />
       <main>
         {/* Hero unit */}
         <Box
