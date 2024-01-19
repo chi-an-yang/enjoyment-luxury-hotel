@@ -1,12 +1,15 @@
-import { Stack } from '@mui/material';
-import SelectorComponent from '../../../ui-components/Selector';
+import { Typography } from '@mui/material';
+import DistrictSelector from '@src/common/DistrictSelector';
+import DateSelector from '@src/common/DateSelector';
 
 const SelectorComponents = () => {
   return (
-    <Stack direction="column" spacing={1}>
-      <SelectorComponent type="district"></SelectorComponent>
-      <SelectorComponent type="date"></SelectorComponent>
-    </Stack>
+    <>
+      <Typography variant="body1">District Selector</Typography>
+      <DistrictSelector />
+      <Typography variant="body1">Date Selector</Typography>
+      <DateSelector />
+    </>
   );
 };
 
