@@ -28,9 +28,9 @@ const Title = ({ show = true, title, handleClose }: TitleProps) => {
       display="flex"
       justifyContent={title ? 'space-between' : 'end'}
       alignItems="center"
-      borderBottom={title ? `solid 1px ${palette.neutral[40]}` : ''}
+      borderBottom={title && `solid 1px ${palette.neutral[40]}`}
       fontWeight="bold"
-      sx={{ backgroundColor: title ? palette.neutral[10] : '' }}
+      sx={{ backgroundColor: title && palette.neutral[10] }}
     >
       {title}
       <SvgIcon
@@ -49,24 +49,30 @@ const Title = ({ show = true, title, handleClose }: TitleProps) => {
 
 // Modal Content
 interface ContentTextProps {
+  show: boolean;
   txtContent: string;
 }
-const ContentText = ({ txtContent }: ContentTextProps) => (
-  <DialogContentText id="alert-dialog-description" textAlign="center" p={2}>
-    {txtContent}
-  </DialogContentText>
-);
+const ContentText = ({ show, txtContent }: ContentTextProps) => {
+  if (!show) return;
+  return (
+    <DialogContentText id="alert-dialog-description" textAlign="center" p={2}>
+      {txtContent}
+    </DialogContentText>
+  );
+};
 interface CustomContentProps {
+  show: boolean;
   children: ReactNode;
 }
-const CustomContent = ({ children }: CustomContentProps) => <Box p={6}>{children}</Box>;
-interface ContentProps {
-  txtContent?: string;
-  children?: ReactNode;
-}
+const CustomContent = ({ show, children }: CustomContentProps) => {
+  if (!show) return;
+  return <Box p={6}>{children}</Box>;
+};
+interface ContentProps extends ContentTextProps, CustomContentProps {}
 const Content = ({ txtContent, children }: ContentProps) => (
   <DialogContent>
-    {txtContent ? <ContentText txtContent={txtContent} /> : <CustomContent children={children} />}
+    <ContentText show={!!txtContent} txtContent={txtContent} />
+    <CustomContent show={!!children} children={children} />
   </DialogContent>
 );
 
