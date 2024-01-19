@@ -1,26 +1,22 @@
 import {
   Button,
-  Box,
   Dialog,
   DialogActions,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   useTheme,
   SvgIcon,
 } from '@mui/material';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { IoClose } from 'react-icons/io5';
 
 // Modal Title
 interface TitleProps {
-  show?: boolean;
   title?: string;
   handleClose: () => void;
 }
-const Title = ({ show = true, title, handleClose }: TitleProps) => {
+const Title = ({ title, handleClose }: TitleProps) => {
   const { palette } = useTheme();
-  if (!show) return;
 
   return (
     <DialogTitle
@@ -47,52 +43,15 @@ const Title = ({ show = true, title, handleClose }: TitleProps) => {
   );
 };
 
-// Modal Content
-interface ContentTextProps {
-  show: boolean;
-  txtContent: string;
-}
-const ContentText = ({ show, txtContent }: ContentTextProps) => {
-  if (!show) return;
-  return (
-    <DialogContentText id="alert-dialog-description" textAlign="center" p={2}>
-      {txtContent}
-    </DialogContentText>
-  );
-};
-interface CustomContentProps {
-  show: boolean;
-  children: ReactNode;
-}
-const CustomContent = ({ show, children }: CustomContentProps) => {
-  if (!show) return;
-  return <Box p={6}>{children}</Box>;
-};
-interface ContentProps extends ContentTextProps, CustomContentProps {}
-const Content = ({ txtContent, children }: ContentProps) => (
-  <DialogContent>
-    <ContentText show={!!txtContent} txtContent={txtContent} />
-    <CustomContent show={!!children} children={children} />
-  </DialogContent>
-);
-
 // Modal ActionButtons
 interface ActionButtonsProps {
-  show?: boolean;
   handleClose: () => void;
   cancelTxt?: string;
   handleSubmit: () => void;
   submitTxt?: string;
 }
-const ActionButtons = ({
-  show = true,
-  handleClose,
-  cancelTxt,
-  handleSubmit,
-  submitTxt,
-}: ActionButtonsProps) => {
+const ActionButtons = ({ handleClose, cancelTxt, handleSubmit, submitTxt }: ActionButtonsProps) => {
   const { palette } = useTheme();
-  if (!show) return;
 
   return (
     <DialogActions
@@ -132,55 +91,41 @@ const ActionButtons = ({
 // Modal
 interface ModalProps {
   open: boolean;
-  setOpen: (open: boolean) => void;
+  handleClose: () => void;
   title?: string;
-  txtContent?: string;
-  children?: ReactNode;
+  children: ReactNode;
   cancelTxt?: string;
   submitTxt?: string;
-  hideModalTitle?: boolean;
-  hideActionButtons?: boolean;
-  cannotCloseManually?: boolean;
   submitAction?: () => void;
-  closeCondition?: (closeModal: (open: boolean) => void) => () => void;
 }
 const Modal = ({
   open,
-  setOpen,
+  handleClose,
   title,
-  txtContent,
   children,
   cancelTxt,
   submitTxt,
-  hideModalTitle,
-  hideActionButtons,
-  cannotCloseManually,
   submitAction = () => {},
-  closeCondition,
 }: ModalProps) => {
-  const handleClose = () => setOpen(false);
   const handleSubmit = () => {
     submitAction();
-    setOpen(false);
+    handleClose();
   };
-  useEffect(() => {
-    const callback = closeCondition ? closeCondition(handleClose) : () => {};
-    return () => {
-      callback();
-    };
-  }, [open, closeCondition]);
 
   return (
     <Dialog
       open={open}
-      onClose={!cannotCloseManually ? handleClose : () => {}}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      sx={{
+        '.MuiDialogContent-root': {
+          padding: '48px 60px !important',
+        },
+      }}
     >
-      <Title show={!hideModalTitle} title={title} handleClose={handleClose} />
-      <Content txtContent={txtContent} children={children} />
+      <Title title={title} handleClose={handleClose} />
+      <DialogContent>{children}</DialogContent>
       <ActionButtons
-        show={!hideActionButtons}
         handleClose={handleClose}
         cancelTxt={cancelTxt}
         handleSubmit={handleSubmit}
