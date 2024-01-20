@@ -15,7 +15,7 @@ const ModalComponents = () => {
       </Button>
       <ModalComponent
         open={open_1}
-        handleClose={() => setOpen_1(false)}
+        onClose={() => setOpen_1(false)}
         title="彈窗標題"
         cancelTxt="取消文字範例"
         submitTxt="確認文字範例"
@@ -30,7 +30,7 @@ const ModalComponents = () => {
       <Button variant="contained" onClick={() => setOpen_2(true)}>
         彈窗（不含標題）
       </Button>
-      <ModalComponent open={open_2} handleClose={() => setOpen_2(false)}>
+      <ModalComponent open={open_2} onClose={() => setOpen_2(false)}>
         <Typography component="span">彈窗內文範例 2</Typography>
       </ModalComponent>
     </Stack>

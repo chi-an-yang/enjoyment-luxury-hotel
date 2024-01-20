@@ -13,9 +13,9 @@ import { IoClose } from 'react-icons/io5';
 // Modal Title
 interface TitleProps {
   title?: string;
-  handleClose: () => void;
+  onClose: () => void;
 }
-const Title = ({ title, handleClose }: TitleProps) => {
+const Title = ({ title, onClose }: TitleProps) => {
   const { palette } = useTheme();
 
   return (
@@ -30,7 +30,7 @@ const Title = ({ title, handleClose }: TitleProps) => {
     >
       {title}
       <SvgIcon
-        onClick={handleClose}
+        onClick={onClose}
         fontSize="small"
         sx={{
           margin: title ? '0' : '-16px -20px',
@@ -45,12 +45,12 @@ const Title = ({ title, handleClose }: TitleProps) => {
 
 // Modal ActionButtons
 interface ActionButtonsProps {
-  handleClose: () => void;
+  onClose: () => void;
   cancelTxt?: string;
   handleSubmit: () => void;
   submitTxt?: string;
 }
-const ActionButtons = ({ handleClose, cancelTxt, handleSubmit, submitTxt }: ActionButtonsProps) => {
+const ActionButtons = ({ onClose, cancelTxt, handleSubmit, submitTxt }: ActionButtonsProps) => {
   const { palette } = useTheme();
 
   return (
@@ -67,7 +67,7 @@ const ActionButtons = ({ handleClose, cancelTxt, handleSubmit, submitTxt }: Acti
       <Button
         fullWidth
         variant="outlined"
-        onClick={handleClose}
+        onClick={onClose}
         sx={{
           padding: '8px 16px',
         }}
@@ -91,7 +91,7 @@ const ActionButtons = ({ handleClose, cancelTxt, handleSubmit, submitTxt }: Acti
 // Modal
 interface ModalProps {
   open: boolean;
-  handleClose: () => void;
+  onClose: () => void;
   title?: string;
   children: ReactNode;
   cancelTxt?: string;
@@ -100,7 +100,7 @@ interface ModalProps {
 }
 const Modal = ({
   open,
-  handleClose,
+  onClose,
   title,
   children,
   cancelTxt,
@@ -109,7 +109,7 @@ const Modal = ({
 }: ModalProps) => {
   const handleSubmit = () => {
     submitAction();
-    handleClose();
+    onClose();
   };
 
   return (
@@ -123,10 +123,10 @@ const Modal = ({
         },
       }}
     >
-      <Title title={title} handleClose={handleClose} />
+      <Title title={title} onClose={onClose} />
       <DialogContent>{children}</DialogContent>
       <ActionButtons
-        handleClose={handleClose}
+        onClose={onClose}
         cancelTxt={cancelTxt}
         handleSubmit={handleSubmit}
         submitTxt={submitTxt}
