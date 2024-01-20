@@ -127,6 +127,9 @@ const components: ThemeOptions['components'] = {
     styleOverrides: {
       // 對應到樣式 .css-xxxxxx-MuiButtonBase-root-MuiButton-root
       root: {
+        fontSize: '16px',
+        lineHeight: '24px',
+        borderRadius: '8px',
         fontWeight: 700,
         boxShadow: 'none',
 
@@ -154,7 +157,7 @@ const components: ThemeOptions['components'] = {
       // 對應到樣式 .css-xxxxxx-MuiInputBase-root-MuiOutlinedInput-root
       root: {
         backgroundColor: palette.neutral[0],
-        fontWeight: 500,
+        fontWeight: 700,
         borderRadius: '8px',
         [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
           borderColor: palette.neutral[40],
