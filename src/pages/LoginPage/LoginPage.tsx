@@ -14,16 +14,18 @@ import registerImageUrl from '@src/assets/images/register.png';
 import lineBgUrl from '@src/assets/images/Line.png';
 import InputField from '@src/ui-components/InputField';
 import Checkbox from '@src/ui-components/Checkbox';
+import { useMutation } from '@tanstack/react-query';
+import { userApi } from '@src/apis';
 
 const Heading = () => {
   const { palette } = useTheme();
 
   return (
     <Box>
-      <Typography component="p" variant="Subtitle_14px_B" color={palette.hotelPrimary[100]} mb={1}>
+      <Typography component="p" variant="Subtitle_14px_B" color={palette.hotelPrimary[100]}>
         享樂酒店，誠摯歡迎
       </Typography>
-      <Typography component="h3" variant="H3_32px_B" color={palette.neutral[0]}>
+      <Typography component="h3" variant="H3_32px_B" color={palette.neutral[0]} mt={1}>
         立即開始旅程
       </Typography>
     </Box>
@@ -35,7 +37,7 @@ const RegisterLink = () => {
 
   return (
     <Box>
-      <Typography component={'span'} color={palette.neutral[0]}>
+      <Typography component={'span'} color={palette.neutral[0]} mr={1}>
         沒有會員嗎？
       </Typography>
       {/* TODO: 導頁去註冊 */}
@@ -49,13 +51,35 @@ const RegisterLink = () => {
 const LoginPage = () => {
   const { palette } = useTheme();
 
+  const login = useMutation({
+    mutationFn: userApi.login,
+  });
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    const email = data.get('email')?.toString();
+    const password = data.get('password')?.toString();
+
+    if (email && password) {
+      login.mutate(
+        { email, password },
+        {
+          onSuccess: (res) => {
+            // TODO: 登入成功，記錄使用者資訊
+            console.log(res);
+          },
+          onError: (err) => {
+            // TODO: 登入失敗，跳錯誤訊息
+            console.log(err);
+          },
+        }
+      );
+    } else {
+      // TODO: 跳錯誤訊息
+      console.log('請正確輸入帳號密碼');
+    }
   };
 
   return (
@@ -97,11 +121,16 @@ const LoginPage = () => {
             flexDirection={'column'}
           >
             <Stack gap={2} justifyContent={'center'}>
-              <InputField labelStart="電子信箱" placeholder="hello@example.com" />
-              <InputField labelStart="密碼" placeholder="請輸入密碼" type="password" />
+              <InputField name="email" labelStart="電子信箱" placeholder="hello@example.com" />
+              <InputField
+                name="password"
+                labelStart="密碼"
+                placeholder="請輸入密碼"
+                type="password"
+              />
               <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
                 <FormControlLabel
-                  control={<Checkbox defaultChecked value="remember" />}
+                  control={<Checkbox value="remember" />}
                   slotProps={{ typography: { variant: 'Title_16px_B', color: palette.neutral[0] } }}
                   label="記住帳號"
                 />
