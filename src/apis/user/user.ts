@@ -1,11 +1,10 @@
-import axios from 'axios';
+import axios from '../axios';
 
 // POST /api/v1/user/login
 // {
 //   "email": "timmothy.ramos@example.com",
 //   "password": "Dirt5528295"
 // }
-
 
 // {
 //   "status": true,
