@@ -3,7 +3,7 @@ import { Box, Button, Typography } from '@mui/material';
 import NavbarUser from './NavbarUser';
 
 const NavbarList = () => {
-  const username: string = ''; // TODO:之後資料來源替換成 Zustand
+  const username: string = '六角測試專員'; // TODO:之後資料來源替換成 Zustand
   return (
     <Box className="navbarLists">
       <Button className="button">

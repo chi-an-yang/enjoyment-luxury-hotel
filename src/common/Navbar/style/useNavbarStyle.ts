@@ -1,6 +1,6 @@
 import { useTheme } from '@mui/material';
 
-const useAppBarStyle = () => {
+const useNavbarStyle = () => {
   const { palette } = useTheme();
   const appBarStyle = {
     boxShadow: 'none',
@@ -127,10 +127,9 @@ const useAppBarStyle = () => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      marginLeft: '16px',
     },
   };
   return appBarStyle;
 };
 
-export default useAppBarStyle;
+export default useNavbarStyle;

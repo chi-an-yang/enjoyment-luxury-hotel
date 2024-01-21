@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Box, IconButton, Toolbar, useTheme, AppBar, Paper } from '@mui/material';
 import { MdMenu, MdClose } from 'react-icons/md';
-import useAppBarStyle from './useAppBarStyle';
+import useNavbarStyle from './style/useNavbarStyle';
 import Logo from '@src/assets/logo.svg?react';
-import { NavbarList, NavMenuList } from './NavbarList';
+import { NavbarList, NavMenuList } from './components/NavbarList';
 
 interface NavbarProps {
   hasBackground?: boolean;
@@ -12,7 +12,7 @@ interface NavbarProps {
 
 const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) => {
   const { palette } = useTheme();
-  const appBarStyle = useAppBarStyle();
+  const navbarStyle = useNavbarStyle();
   const [showNavMenu, setShowNavMenu] = useState<boolean>(false);
 
   const handleNavMenuClose = () => {
@@ -38,12 +38,12 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
   };
 
   const NavMenuButton = showNavMenu ? NavMenuCloseButton : NavMenuOpenButton;
-
+  // transparent
   return (
     <AppBar
       position="sticky"
-      color="transparent"
-      sx={appBarStyle}
+      color="info"
+      sx={navbarStyle}
       className={`${hasBackground ? 'hasBackground' : ''}`}
     >
       <Toolbar className="toolbar">
