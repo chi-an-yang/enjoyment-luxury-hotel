@@ -16,6 +16,7 @@ import InputField from '@src/ui-components/InputField';
 import Checkbox from '@src/ui-components/Checkbox';
 import { useMutation } from '@tanstack/react-query';
 import { userApi } from '@src/apis';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Heading = () => {
   const { palette } = useTheme();
@@ -40,8 +41,8 @@ const RegisterLink = () => {
       <Typography component={'span'} color={palette.neutral[0]} mr={1}>
         沒有會員嗎？
       </Typography>
-      {/* TODO: 導頁去註冊 */}
-      <Link href="#" variant="Title_16px_B">
+      {/* 導頁去註冊頁 */}
+      <Link component={RouterLink} to={'/register'} variant="Title_16px_B">
         前往註冊
       </Link>
     </Box>
@@ -134,8 +135,8 @@ const LoginPage = () => {
                   slotProps={{ typography: { variant: 'Title_16px_B', color: palette.neutral[0] } }}
                   label="記住帳號"
                 />
-                {/* TODO: 導頁去忘記密碼 */}
-                <Link href="#" variant="Title_16px_B">
+                {/* 導頁去忘記密碼 */}
+                <Link component={RouterLink} to={'/password'} variant="Title_16px_B">
                   忘記密碼？
                 </Link>
               </Stack>
