@@ -18,6 +18,18 @@ import { useMutation } from '@tanstack/react-query';
 import { userApi } from '@src/apis';
 import { Link as RouterLink } from 'react-router-dom';
 
+const lineBg = {
+  content: `""`,
+  width: '100%',
+  height: '100%',
+  position: 'absolute',
+  backgroundImage: `url(${lineBgUrl})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'auto',
+  backgroundPosition: 'center 21%',
+  opacity: 0.4,
+};
+
 const Heading = () => {
   const { palette } = useTheme();
 
@@ -104,12 +116,8 @@ const LoginPage = () => {
         md={6}
         display={'flex'}
         justifyContent={'center'}
-        sx={{
-          backgroundImage: `url(${lineBgUrl})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'auto',
-          backgroundPosition: 'left 20%',
-        }}
+        position={'relative'}
+        sx={{ '&:before': lineBg }}
       >
         <Stack mx={2.5} justifyContent={'center'} height={'100%'} width={'414px'} gap={5}>
           <Heading />
