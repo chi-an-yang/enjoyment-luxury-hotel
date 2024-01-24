@@ -2,7 +2,7 @@ import { Stack, useTheme } from '@mui/material';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
-type InputFieldProps = {
+export type InputFieldProps = {
   labelStart?: string;
   labelEnd?: string;
 } & TextFieldProps;
