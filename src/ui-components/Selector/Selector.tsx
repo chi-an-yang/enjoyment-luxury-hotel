@@ -1,15 +1,15 @@
 import { MenuItem, FormControl } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MuiSelect, { SelectChangeEvent } from '@mui/material/Select';
 
-interface SelectorProps {
+interface SelectProps {
   value: number;
   onChange: (event: SelectChangeEvent<number>) => void;
   data: { text: string; value: string | number }[];
 }
-const Selector = ({ value, onChange, data }: SelectorProps) => {
+const Select = ({ value, onChange, data }: SelectProps) => {
   return (
     <FormControl fullWidth>
-      <Select
+      <MuiSelect
         value={value}
         onChange={onChange}
         displayEmpty
@@ -20,9 +20,9 @@ const Selector = ({ value, onChange, data }: SelectorProps) => {
             {text}
           </MenuItem>
         ))}
-      </Select>
+      </MuiSelect>
     </FormControl>
   );
 };
 
-export default Selector;
+export default Select;

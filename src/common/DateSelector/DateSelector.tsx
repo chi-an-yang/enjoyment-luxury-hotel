@@ -3,7 +3,11 @@ import { Stack } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import Selector from '@src/ui-components/Selector';
 
-const DateSelector = () => {
+const DateSelector = ({
+  onChange,
+}: {
+  onChange: (value: { year: number; month: number; date: number }) => void;
+}) => {
   const now = new Date();
   const [selectedDate, setSelectedDate] = useState({
     year: now.getFullYear(),
@@ -16,10 +20,14 @@ const DateSelector = () => {
       [type]: event.target.value as number,
     }));
   };
+  useEffect(() => {
+    onChange(selectedDate);
+  }, [selectedDate]);
+
   const getArrayFromStartToEnd = (start: number, end: number): number[] =>
     Array.from({ length: end - start + 1 }, (_, index) => start + index);
   // Year
-  const yearArray = getArrayFromStartToEnd(1900, selectedDate.year);
+  const yearArray = getArrayFromStartToEnd(1900, now.getFullYear());
   // Month
   const monthArray = getArrayFromStartToEnd(1, 12);
   // Date
