@@ -13,8 +13,10 @@ const SelectorComponents = () => {
     <>
       <Typography variant="body1">District Selector</Typography>
       <DistrictSelector onChange={handleDistrictChange} />
+      <DistrictSelector zipCode="882" onChange={handleDistrictChange} />
       <Typography variant="body1">Date Selector</Typography>
       <DateSelector onChange={handleDateChange} />
+      <DateSelector year={2023} month={12} date={31} onChange={handleDateChange} />
     </>
   );
 };

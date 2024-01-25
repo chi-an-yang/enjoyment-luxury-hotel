@@ -5,14 +5,20 @@ import Selector from '@src/ui-components/Selector';
 
 const DateSelector = ({
   onChange,
+  year,
+  month,
+  date,
 }: {
   onChange: (value: { year: number; month: number; date: number }) => void;
+  year?: number;
+  month?: number;
+  date?: number;
 }) => {
   const now = new Date();
   const [selectedDate, setSelectedDate] = useState({
-    year: now.getFullYear(),
-    month: now.getMonth() + 1,
-    date: now.getDate(),
+    year: year ?? now.getFullYear(),
+    month: month ?? now.getMonth() + 1,
+    date: date ?? now.getDate(),
   });
   const handleDateChange = (event: SelectChangeEvent<number>, type: 'year' | 'month' | 'date') => {
     setSelectedDate((prevIndices) => ({
