@@ -20,8 +20,8 @@ const DistrictSelect = ({
     ? districtJson[cityIndex].districts.findIndex((district) => district.zip === zipCode)
     : 0;
   const [selectedIndices, setSelectedIndices] = useState({
-    cityIndex: cityIndex,
-    districtIndex: districtIndex,
+    cityIndex,
+    districtIndex,
   });
 
   const handleLevelChange = (value: number, level: 'cityIndex' | 'districtIndex') => {
