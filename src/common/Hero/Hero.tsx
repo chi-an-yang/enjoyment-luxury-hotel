@@ -17,8 +17,8 @@ const RandomIcon = () => {
     return (
       <Box
         sx={{
-          width: isMediumOrLarger ? '144px' : '72px',
-          height: isMediumOrLarger ? '144px' : '72px',
+          width: '72px',
+          height: '72px',
         }}
       >
         <Icon style={{ width: '100%', height: '100%' }} />
@@ -29,8 +29,8 @@ const RandomIcon = () => {
     return (
       <Box
         sx={{
-          width: isMediumOrLarger ? '144px' : '72px',
-          height: isMediumOrLarger ? '144px' : '72px',
+          width: '144px',
+          height: '144px',
         }}
       >
         <Icon style={{ width: '100%', height: '100%' }} />
@@ -48,8 +48,8 @@ const HeroTitle = ({ username }: { username: string }) => {
       <Typography
         sx={{
           color: palette.neutral['0'],
-          mt: isMediumOrLarger ? 0 : 2,
-          ml: isMediumOrLarger ? 3 : 0,
+          mt: 2,
+          ml: 0,
         }}
         variant="H3_32px_B"
       >
@@ -62,8 +62,8 @@ const HeroTitle = ({ username }: { username: string }) => {
       <Typography
         sx={{
           color: palette.neutral['0'],
-          mt: isMediumOrLarger ? 0 : 2,
-          ml: isMediumOrLarger ? 3 : 0,
+          mt: 0,
+          ml: 3,
         }}
         variant="H1_48px_B"
       >
