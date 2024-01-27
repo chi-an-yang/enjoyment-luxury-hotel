@@ -1,4 +1,3 @@
-import { useTheme } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
@@ -7,15 +6,22 @@ import { userApi } from '@src/apis';
 import HookFormInput from '@src/common/HookFormInput';
 import Checkbox from '@src/ui-components/Checkbox';
 import { useMutation } from '@tanstack/react-query';
-import { useForm } from 'react-hook-form';
+import { Controller, FieldValue, useForm } from 'react-hook-form';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
+import { useUserStore } from '@src/store/useUserStore';
+import { useEffect } from 'react';
 
-const emailValidate = (value: string) => {
+const emailValidate = (input: FieldValue<LoginFormValues>) => {
+  const value = input as string;
   if (value === '') return '此欄必填';
+
+  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!regex.test(value)) return '請輸入正確的電子信箱';
 };
 
-const passwordValidate = (value: string) => {
+const passwordValidate = (input: FieldValue<LoginFormValues>) => {
+  const value = input as string;
   if (value === '') return '此欄必填';
 
   const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -25,32 +31,49 @@ const passwordValidate = (value: string) => {
 type LoginFormValues = {
   email: string;
   password: string;
+  isRemember: boolean;
 };
 
 const LoginForm = () => {
-  const { palette } = useTheme();
-  const { handleSubmit, control } = useForm<LoginFormValues>({
+  const { handleSubmit, control, setValue } = useForm<LoginFormValues>({
     defaultValues: {
       email: '',
       password: '',
+      isRemember: false,
     },
   });
 
-  const login = useMutation({
-    mutationFn: userApi.login,
-  });
+  // 從本地存儲中加載保存的數據
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('email');
+    const savedPassword = localStorage.getItem('password');
+    if (savedEmail && savedPassword) {
+      setValue('email', savedEmail);
+      setValue('password', savedPassword);
+      setValue('isRemember', true);
+    }
+  }, [setValue]);
+
+  const setUser = useUserStore((state) => state.setUser);
+
+  const login = useMutation({ mutationFn: userApi.login });
 
   const handleFormSubmit = handleSubmit(
-    ({ email, password }) => {
-      console.log({ email, password });
+    ({ email, password, isRemember }) => {
       login.mutate(
         { email, password },
         {
           onSuccess: (res) => {
-            // TODO: 登入成功，登入資訊存 zustand
+            // TODO: 登入成功，跳登入成功訊息
             console.log(res);
+            // 登入成功，登入資訊存 zustand
+            setUser(res);
 
-            // TODO: 如果有勾選記住帳號，就存到 localStorage
+            // 如果有勾選記住帳號，就存到 localStorage
+            if (isRemember) {
+              localStorage.setItem('email', email);
+              localStorage.setItem('password', password);
+            }
           },
           onError: (error) => {
             // TODO: 登入失敗，跳錯誤訊息
@@ -90,10 +113,23 @@ const LoginForm = () => {
           type="password"
         />
         <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
-          <FormControlLabel
-            control={<Checkbox value="remember" />}
-            slotProps={{ typography: { variant: 'Title_16px_B', color: palette.neutral[0] } }}
-            label="記住帳號"
+          <Controller
+            control={control}
+            name="isRemember"
+            render={({ field: { ref, value, ...field } }) => (
+              <FormControlLabel
+                ref={ref}
+                {...field}
+                control={<Checkbox checked={value} />}
+                slotProps={{
+                  typography: {
+                    variant: 'Title_16px_B',
+                    color: (theme) => theme.palette.neutral[0],
+                  },
+                }}
+                label="記住帳號"
+              />
+            )}
           />
           {/* 導頁去忘記密碼 */}
           <Link component={RouterLink} to={'/password'} variant="Title_16px_B">

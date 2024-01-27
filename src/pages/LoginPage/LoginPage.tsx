@@ -30,6 +30,7 @@ const lineBg = {
     backgroundSize: 'auto',
     backgroundPosition: 'center 21%',
     opacity: 0.4,
+    pointerEvents: 'none',
   },
 };
 

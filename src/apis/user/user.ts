@@ -34,16 +34,20 @@ type Address = {
   city: string;
 };
 
-type LoginResponse = {
-  address: Address;
-  _id: string;
-  name: string;
-  email: string;
-  phone: string;
-  birthday: string;
-  createdAt: string;
-  updatedAt: string;
-  id: string;
+export type LoginResponse = {
+  result: {
+    address: Address;
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+    birthday: string;
+    createdAt: string;
+    updatedAt: string;
+    id: string;
+  };
+  status: boolean;
+  token: string;
 };
 
 export const login = async (params: {
