@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, useTheme, useMediaQuery } from '@mui/material';
 import MemberHero from '@src/assets/images/member-hero.png';
 import Avatar01 from '@src/assets/icons/avatar01.svg?react';
 import Avatar02 from '@src/assets/icons/avatar02.svg?react';
@@ -10,19 +10,69 @@ import Avatar06 from '@src/assets/icons/avatar06.svg?react';
 const avatarComponents = [Avatar01, Avatar02, Avatar03, Avatar04, Avatar05, Avatar06];
 
 const RandomIcon = () => {
+  const { breakpoints } = useTheme();
+  const isMediumOrLarger = useMediaQuery(breakpoints.up('md'));
   const Icon = avatarComponents[Math.floor(Math.random() * avatarComponents.length)];
-  return (
-    <Box
-      sx={{
-        width: { xs: '72px', md: '144px' },
-        height: { xs: '72px', md: '144px' },
-      }}
-    >
-      <Icon style={{ width: '100%', height: '100%' }} />
-    </Box>
-  );
+  const MobileIcon = () => {
+    return (
+      <Box
+        sx={{
+          width: isMediumOrLarger ? '144px' : '72px',
+          height: isMediumOrLarger ? '144px' : '72px',
+        }}
+      >
+        <Icon style={{ width: '100%', height: '100%' }} />
+      </Box>
+    );
+  };
+  const DesktopIcon = () => {
+    return (
+      <Box
+        sx={{
+          width: isMediumOrLarger ? '144px' : '72px',
+          height: isMediumOrLarger ? '144px' : '72px',
+        }}
+      >
+        <Icon style={{ width: '100%', height: '100%' }} />
+      </Box>
+    );
+  };
+  return isMediumOrLarger ? <DesktopIcon /> : <MobileIcon />;
 };
 
+const HeroTitle = ({ username }: { username: string }) => {
+  const { breakpoints, palette } = useTheme();
+  const isMediumOrLarger = useMediaQuery(breakpoints.up('md'));
+  const MobileTitle = () => {
+    return (
+      <Typography
+        sx={{
+          color: palette.neutral['0'],
+          mt: isMediumOrLarger ? 0 : 2,
+          ml: isMediumOrLarger ? 3 : 0,
+        }}
+        variant="H3_32px_B"
+      >
+        Hello，{username}
+      </Typography>
+    );
+  };
+  const DesktopTitle = () => {
+    return (
+      <Typography
+        sx={{
+          color: palette.neutral['0'],
+          mt: isMediumOrLarger ? 0 : 2,
+          ml: isMediumOrLarger ? 3 : 0,
+        }}
+        variant="H1_48px_B"
+      >
+        Hello，{username}
+      </Typography>
+    );
+  };
+  return isMediumOrLarger ? <DesktopTitle /> : <MobileTitle />;
+};
 const Hero = () => {
   const username: string = '六角測試專員'; // TODO:之後資料來源替換成 Zustand
   return (
@@ -44,16 +94,7 @@ const Hero = () => {
         }}
       >
         <RandomIcon />
-        <Typography
-          sx={{
-            color: '#fff',
-            mt: { xs: 2, md: 0 },
-            ml: { xs: 0, md: 3 },
-            fontSize: { xs: '32px', md: '48px' },
-          }}
-        >
-          Hello，{username}
-        </Typography>
+        <HeroTitle username={username} />
       </Grid>
     </Grid>
   );
