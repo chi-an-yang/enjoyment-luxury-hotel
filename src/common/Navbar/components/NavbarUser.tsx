@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import { Box, Button, Menu, SvgIcon, MenuItem } from '@mui/material';
 import { MdOutlineAccountCircle } from 'react-icons/md';
+import useNavbarUserStyle from '../style/useNavbarUserStyle';
 
 const NavbarUser = ({ username }: { username: string }) => {
+  const navbarUserStyle = useNavbarUserStyle();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -17,17 +20,19 @@ const NavbarUser = ({ username }: { username: string }) => {
   };
   if (!username) {
     return (
-      <Button className="button">
-        <Link to="/login" className="link login">
-          會員登入
-        </Link>
-      </Button>
+      <Box sx={navbarUserStyle}>
+        <Button className="button">
+          <Link component={RouterLink} to="/login" className="link login">
+            會員登入
+          </Link>
+        </Button>
+      </Box>
     );
   }
   return (
-    <>
-      <Box className="userWrapper" onClick={handleMenu}>
-        <Button className="button">
+    <Box sx={navbarUserStyle}>
+      <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
+        <Button className="button" onClick={handleMenu}>
           <SvgIcon sx={{ color: '#fff' }}>
             <MdOutlineAccountCircle />
           </SvgIcon>
@@ -50,13 +55,17 @@ const NavbarUser = ({ username }: { username: string }) => {
         onClose={handleClose}
       >
         <MenuItem>
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/member/user-info">
+          <Link
+            component={RouterLink}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            to="/member/user-info"
+          >
             我的帳戶
           </Link>
         </MenuItem>
         <MenuItem onClick={handleLogout}>登出</MenuItem>
       </Menu>
-    </>
+    </Box>
   );
 };
 

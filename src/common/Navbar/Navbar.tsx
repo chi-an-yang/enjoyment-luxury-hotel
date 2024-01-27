@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Box, IconButton, Toolbar, useTheme, AppBar, Paper } from '@mui/material';
 import { MdMenu, MdClose } from 'react-icons/md';
 import useNavbarStyle from './style/useNavbarStyle';
+import useNavMenuButtonStyle from './style/useNavMenuButtonStyle';
 import Logo from '@src/assets/logo.svg?react';
-import { NavbarList, NavMenuList } from './components/NavbarList';
+import NavbarList from './components/NavbarList';
+import NavMenuList from './components/NavMenuList';
 
 interface NavbarProps {
   hasBackground?: boolean;
@@ -13,15 +15,15 @@ interface NavbarProps {
 const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) => {
   const { palette } = useTheme();
   const navbarStyle = useNavbarStyle();
+  const navMenuButtonStyle = useNavMenuButtonStyle();
   const [showNavMenu, setShowNavMenu] = useState<boolean>(false);
-
   const handleNavMenuClose = () => {
     setShowNavMenu(false);
   };
   const NavMenuCloseButton = () => {
     return (
-      <IconButton size="large" onClick={handleNavMenuClose} color="inherit" className="icon">
-        <MdClose size="large" />
+      <IconButton size="large" onClick={handleNavMenuClose} color="inherit" sx={navMenuButtonStyle}>
+        <MdClose size="48" />
       </IconButton>
     );
   };
@@ -31,7 +33,7 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
   };
   const NavMenuOpenButton = () => {
     return (
-      <IconButton size="small" onClick={handleNavMenuOpen} color="inherit" className="icon">
+      <IconButton size="small" onClick={handleNavMenuOpen} color="inherit" sx={navMenuButtonStyle}>
         <MdMenu />
       </IconButton>
     );
@@ -46,12 +48,18 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
       sx={navbarStyle}
       className={`${hasBackground ? 'hasBackground' : ''}`}
     >
-      <Toolbar className="toolbar">
-        <Box className="logo">
+      <Toolbar
+        sx={{
+          display: 'flex',
+          padding: { xs: '16px 12px', md: '24px 80px' },
+          transition: 'height 1.6s cubic-bezier(0.86, 0, 0.07, 1)',
+        }}
+      >
+        <Box sx={{ flex: '0 0 auto', height: '72px' }}>
           <Logo fill={palette.neutral[0]} />
         </Box>
         <Box sx={{ display: 'flex', flexGrow: 1 }} />
-        <Box className={`${navbarListShow ? 'navbarListShow' : 'navbarListsHide'}`}>
+        <Box sx={{ display: navbarListShow ? 'flex' : 'none' }}>
           <NavbarList />
         </Box>
       </Toolbar>
@@ -59,9 +67,7 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
         <Paper elevation={0} className={`navMenuBackground ${showNavMenu ? 'open' : ''}`} />
         <Box className={`navMenu ${showNavMenu ? 'open' : ''}`}>
           <NavMenuButton />
-          <Box className={`menu ${showNavMenu ? 'open' : ''}`}>
-            <NavMenuList />
-          </Box>
+          <NavMenuList showNavMenu={showNavMenu} />
         </Box>
       </Box>
     </AppBar>
