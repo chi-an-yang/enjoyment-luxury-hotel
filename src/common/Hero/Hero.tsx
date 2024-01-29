@@ -9,40 +9,30 @@ import Avatar06 from '@src/assets/icons/avatar06.svg?react';
 
 const avatarComponents = [Avatar01, Avatar02, Avatar03, Avatar04, Avatar05, Avatar06];
 
-const RandomIcon = () => {
+const UserIcon = () => {
   const { breakpoints } = useTheme();
-  const isMediumOrLarger = useMediaQuery(breakpoints.up('md'));
+  const isDesktop = useMediaQuery(breakpoints.up('md'));
   const Icon = avatarComponents[Math.floor(Math.random() * avatarComponents.length)];
   const MobileIcon = () => {
     return (
-      <Box
-        sx={{
-          width: '72px',
-          height: '72px',
-        }}
-      >
+      <Box width="72px" height="72px">
         <Icon style={{ width: '100%', height: '100%' }} />
       </Box>
     );
   };
   const DesktopIcon = () => {
     return (
-      <Box
-        sx={{
-          width: '144px',
-          height: '144px',
-        }}
-      >
+      <Box width="144px" height="144px">
         <Icon style={{ width: '100%', height: '100%' }} />
       </Box>
     );
   };
-  return isMediumOrLarger ? <DesktopIcon /> : <MobileIcon />;
+  return isDesktop ? <DesktopIcon /> : <MobileIcon />;
 };
 
 const HeroTitle = ({ username }: { username: string }) => {
   const { breakpoints, palette } = useTheme();
-  const isMediumOrLarger = useMediaQuery(breakpoints.up('md'));
+  const isDesktop = useMediaQuery(breakpoints.up('md'));
   const MobileTitle = () => {
     return (
       <Typography
@@ -71,7 +61,7 @@ const HeroTitle = ({ username }: { username: string }) => {
       </Typography>
     );
   };
-  return isMediumOrLarger ? <DesktopTitle /> : <MobileTitle />;
+  return isDesktop ? <DesktopTitle /> : <MobileTitle />;
 };
 const Hero = () => {
   const username: string = '六角測試專員'; // TODO:之後資料來源替換成 Zustand
@@ -93,7 +83,7 @@ const Hero = () => {
           padding: { xs: '0 20px', md: '0 16.25%' },
         }}
       >
-        <RandomIcon />
+        <UserIcon />
         <HeroTitle username={username} />
       </Grid>
     </Grid>
