@@ -6,6 +6,7 @@ import SelectComponents from './components/SelectComponents';
 import SwiperComponent from './components/SwiperComponent';
 import Footer from '@src/common/Footer';
 import HotelTypography from './components/HotelTypography';
+import ToastComponent from './components/ToastComponent';
 
 const ExamplePage = () => {
   return (
@@ -31,7 +32,9 @@ const ExamplePage = () => {
 
           <Divider textAlign="center">Select</Divider>
           <SelectComponents />
-          
+
+          <Divider textAlign="center">Toast</Divider>
+          <ToastComponent />
         </Stack>
       </Container>
       <Divider textAlign="center">Footer</Divider>
