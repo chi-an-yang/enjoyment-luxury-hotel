@@ -11,6 +11,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import { useUserStore } from '@src/store/useUserStore';
 import { useEffect } from 'react';
+import { useSnackbar } from 'notistack';
 
 const emailValidate = (input: FieldValue<LoginFormValues>) => {
   const value = input as string;
@@ -35,6 +36,7 @@ type LoginFormValues = {
 };
 
 const LoginForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const { handleSubmit, control, setValue } = useForm<LoginFormValues>({
     defaultValues: {
       email: '',
@@ -58,41 +60,39 @@ const LoginForm = () => {
 
   const login = useMutation({ mutationFn: userApi.login });
 
-  const handleFormSubmit = handleSubmit(
-    ({ email, password, isRemember }) => {
-      login.mutate(
-        { email, password },
-        {
-          onSuccess: (res) => {
-            // TODO: 登入成功，跳登入成功訊息
-            console.log(res);
-            // 登入成功，登入資訊存 zustand
-            setUser(res);
+  const handleFormSubmit = handleSubmit(({ email, password, isRemember }) => {
+    login.mutate(
+      { email, password },
+      {
+        onSuccess: (res) => {
+          // 登入成功，跳登入成功訊息
+          enqueueSnackbar('登入成功', { variant: 'success' });
+          // 登入成功，登入資訊存 zustand
+          setUser(res);
 
-            // 如果有勾選記住帳號，就存到 localStorage
-            if (isRemember) {
-              localStorage.setItem('email', email);
-              localStorage.setItem('password', password);
-            }
-          },
-          onError: (error) => {
-            // TODO: 登入失敗，跳錯誤訊息
-            let message = '登入失敗';
+          // 如果有勾選記住帳號，就存到 localStorage
+          if (isRemember) {
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+          }
+        },
+        onError: (error) => {
+          // 登入失敗，跳錯誤訊息
+          let message = '登入失敗';
 
-            if (axios.isAxiosError(error)) {
-              message = error?.response?.data?.message;
-            }
+          if (error instanceof Error) {
+            message = error.message;
+          }
 
-            console.log(message);
-          },
-        }
-      );
-    },
-    (error) => {
-      // TODO: 前端驗證失敗，跳錯誤訊息
-      console.log(error);
-    }
-  );
+          if (axios.isAxiosError(error)) {
+            message = error?.response?.data?.message;
+          }
+
+          enqueueSnackbar(message, { variant: 'error' });
+        },
+      }
+    );
+  });
 
   return (
     <Stack component="form" noValidate onSubmit={handleFormSubmit} gap={5}>
