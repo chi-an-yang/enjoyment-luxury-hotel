@@ -1,12 +1,24 @@
 import { useState } from 'react';
-import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Menu, SvgIcon, MenuItem } from '@mui/material';
+import { Link, Box, Button, Menu, SvgIcon, MenuItem, useTheme } from '@mui/material';
 import { MdOutlineAccountCircle } from 'react-icons/md';
-import useNavbarUserStyle from '../style/useNavbarUserStyle';
 
 const NavbarUser = ({ username }: { username: string }) => {
-  const navbarUserStyle = useNavbarUserStyle();
+  const { palette } = useTheme();
+  const navbarUserStyle = {
+    '.button': {
+      color: palette.neutral[0],
+      marginLeft: '16px',
+      padding: '16px',
+    },
+    '.link': {
+      textDecoration: 'none',
+      color: 'white',
+      '&:first-of-type': {
+        marginLeft: '0',
+      },
+    },
+  };
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

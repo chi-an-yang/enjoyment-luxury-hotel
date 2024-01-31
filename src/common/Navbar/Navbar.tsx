@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Box, IconButton, Toolbar, useTheme, AppBar, Paper } from '@mui/material';
 import { MdMenu, MdClose } from 'react-icons/md';
-import useNavbarStyle from './style/useNavbarStyle';
-import useNavMenuButtonStyle from './style/useNavMenuButtonStyle';
 import Logo from '@src/assets/logo.svg?react';
 import NavbarList from './components/NavbarList';
 import NavMenuList from './components/NavMenuList';
@@ -14,9 +12,18 @@ interface NavbarProps {
 
 const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) => {
   const { palette } = useTheme();
-  const navbarStyle = useNavbarStyle();
-  const navMenuButtonStyle = useNavMenuButtonStyle();
+  const navMenuButtonStyle = {
+    position: 'fixed',
+    top: '20px',
+    right: '20px',
+    zIndex: 0,
+    padding: 0,
+    width: '48px',
+    height: '48px',
+    color: palette.neutral[0],
+  };
   const [showNavMenu, setShowNavMenu] = useState<boolean>(false);
+
   const handleNavMenuClose = () => {
     setShowNavMenu(false);
   };
@@ -40,14 +47,9 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
   };
 
   const NavMenuButton = showNavMenu ? NavMenuCloseButton : NavMenuOpenButton;
-  // transparent
+
   return (
-    <AppBar
-      position="sticky"
-      color="info"
-      sx={navbarStyle}
-      className={`${hasBackground ? 'hasBackground' : ''}`}
-    >
+    <AppBar position="sticky" color="transparent" className={hasBackground ? 'hasBackground' : ''}>
       <Toolbar
         sx={{
           display: 'flex',
@@ -64,8 +66,42 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
         </Box>
       </Toolbar>
       <Box>
-        <Paper elevation={0} className={`navMenuBackground ${showNavMenu ? 'open' : ''}`} />
-        <Box className={`navMenu ${showNavMenu ? 'open' : ''}`}>
+        <Paper
+          sx={{
+            opacity: 0,
+            display: 'flex',
+            backgroundColor: palette.neutral['bgcolor'],
+            width: '48px',
+            height: '48px',
+            position: 'fixed',
+            borderRadius: '50%',
+            top: '28px',
+            right: '12px',
+            transition:
+              'transform 0.8s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+            '&.open': {
+              opacity: 100,
+              transform: 'scale(80)',
+            },
+          }}
+          elevation={0}
+          className={showNavMenu ? 'open' : ''}
+        />
+        <Box
+          sx={{
+            display: { xs: 'flex', md: 'none' },
+            position: { xs: 'fixed' },
+            top: { xs: 0 },
+            left: { xs: 0 },
+            flexDirection: { xs: 'column' },
+            justifyContent: { xs: 'space-between' },
+            '&.open': {
+              width: { xs: '100vw' },
+              height: { xs: '100vh' },
+            },
+          }}
+          className={showNavMenu ? 'open' : ''}
+        >
           <NavMenuButton />
           <NavMenuList showNavMenu={showNavMenu} />
         </Box>

@@ -2,12 +2,9 @@ import Link from '@mui/material/Link';
 import { useTheme } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
-import useNavMenuListStyle from '../style/useNavMenuListStyle';
 
 const NavMenuList = ({ showNavMenu }: { showNavMenu: boolean }) => {
   const { palette } = useTheme();
-
-  const navMenuList = useNavMenuListStyle();
   const username: string = '六角測試專員'; // TODO:之後資料來源替換成 Zustand
   const userinfo = username ? '我的帳戶' : '會員登入';
   const handleLogout = () => {
@@ -49,7 +46,29 @@ const NavMenuList = ({ showNavMenu }: { showNavMenu: boolean }) => {
   };
 
   return (
-    <Box sx={navMenuList} className={showNavMenu ? 'open' : ''}>
+    <Box
+      sx={{
+        flex: '1 0 auto',
+        display: 'flex',
+        position: 'fixed',
+        top: '50%',
+        left: '-50px',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0 16px',
+        opacity: 0,
+        width: 0,
+        transform: 'translateY(-50%)',
+        transition: 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+        '&.open': {
+          left: 0,
+          opacity: 1,
+          width: '100%',
+        },
+      }}
+      className={showNavMenu ? 'open' : ''}
+    >
       <NavMenuListItem url="rooms" name="客房旅館" />
       <NavMenuListItem url="user-info" name={userinfo} />
       <NavMenuListItem url="reservation" variant="contained" name="立即訂房" />

@@ -3,11 +3,9 @@ import { useTheme } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import NavbarUser from './NavbarUser';
-import useNavbarListStyle from '../style/useNavbarListStyle';
 
 const NavbarList = () => {
   const { palette } = useTheme();
-  const navbarListStyle = useNavbarListStyle();
   const username: string = '六角測試專員'; // TODO:之後資料來源替換成 Zustand
 
   const NavbarListItem = ({
@@ -43,7 +41,22 @@ const NavbarList = () => {
   };
 
   return (
-    <Box sx={navbarListStyle}>
+    <Box
+      sx={{
+        flexGrow: 0,
+        display: { xs: 'none', md: 'flex' },
+        alignItems: 'center',
+        '.reservation': {
+          width: '128px',
+          height: '56px',
+          display: 'flex',
+          padding: '16px 32px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: '8px',
+        },
+      }}
+    >
       <NavbarListItem url="rooms" name="客房旅館" />
       <NavbarUser username={username} />
       <NavbarListItem url="reservation" variant="contained" name="立即訂房" />
