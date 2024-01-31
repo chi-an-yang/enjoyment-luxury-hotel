@@ -1,133 +1,94 @@
-// const LoginPage = () => {
-//   return <></>;
-// };
-
-// export default LoginPage;
-
-// 官網的範例頁面，可以從這個佈局開始改
+// 官網的範例頁面，從這個佈局開始改
 // [DEMO](https://mui.com/material-ui/getting-started/templates/sign-in-side/)
 // [Source code](https://github.com/mui/material-ui/blob/v5.15.3/docs/data/material/getting-started/templates/sign-in-side/SignInSide.tsx)
 
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { MdLockOutline } from 'react-icons/md';
 import Typography from '@mui/material/Typography';
-import { SvgIcon } from '@mui/material';
+import { Stack, useTheme } from '@mui/material';
+import registerImageUrl from '@src/assets/images/register.png';
+import lineBgUrl from '@src/assets/images/Line.png';
+import { Link as RouterLink } from 'react-router-dom';
+import LoginForm from './components/LoginForm';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Copyright(props: any) {
+const registerBg = {
+  backgroundImage: `url(${registerImageUrl})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+};
+
+const lineBg = {
+  '&:before': {
+    content: `""`,
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    backgroundImage: `url(${lineBgUrl})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'auto',
+    backgroundPosition: 'center 21%',
+    opacity: 0.4,
+    pointerEvents: 'none',
+  },
+};
+
+const Heading = () => {
+  const { palette } = useTheme();
+
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+    <Box>
+      <Typography component="p" variant="Subtitle_14px_B" color={palette.hotelPrimary[100]}>
+        享樂酒店，誠摯歡迎
+      </Typography>
+      <Typography component="h3" variant="H3_32px_B" color={palette.neutral[0]} mt={1}>
+        立即開始旅程
+      </Typography>
+    </Box>
   );
-}
+};
 
-export default function LoginPage() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+const RegisterLink = () => {
+  const { palette } = useTheme();
 
   return (
-    <>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <SvgIcon>
-                <MdLockOutline />
-              </SvgIcon>
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 5 }} />
-            </Box>
-          </Box>
-        </Grid>
+    <Box>
+      <Typography component={'span'} color={palette.neutral[0]} mr={1}>
+        沒有會員嗎？
+      </Typography>
+      {/* 導頁去註冊頁 */}
+      <Link component={RouterLink} to={'/register'} variant="Title_16px_B">
+        前往註冊
+      </Link>
+    </Box>
+  );
+};
+
+const LoginPage = () => {
+  const { palette } = useTheme();
+
+  return (
+    <Grid container component="main" sx={{ height: '100vh', bgcolor: palette.neutral.bgcolor }}>
+      <Grid item xs={false} sm={4} md={6} sx={registerBg} />
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={6}
+        display={'flex'}
+        justifyContent={'center'}
+        position={'relative'}
+        sx={lineBg}
+      >
+        <Stack mx={2.5} justifyContent={'center'} height={'100%'} width={'414px'} gap={5}>
+          <Heading />
+          <LoginForm />
+          <RegisterLink />
+        </Stack>
       </Grid>
-    </>
+    </Grid>
   );
-}
+};
+
+export default LoginPage;
