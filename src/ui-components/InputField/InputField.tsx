@@ -1,22 +1,14 @@
 import { Stack, useTheme } from '@mui/material';
-import TextField from '@mui/material/TextField';
+import TextField, { TextFieldProps } from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { ChangeEvent, useState } from 'react';
 
-type InputFieldProps = {
-  labelStart: string;
-  labelEnd: string;
-  defaultValue: string;
-  placeholder: string;
-};
+export type InputFieldProps = {
+  labelStart?: string;
+  labelEnd?: string;
+} & TextFieldProps;
 
-const InputField = ({ labelStart, labelEnd, defaultValue = '', placeholder }: InputFieldProps) => {
+const InputField = ({ labelStart, labelEnd, ...props }: InputFieldProps) => {
   const { palette } = useTheme();
-  const [value, setValue] = useState(defaultValue);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
 
   return (
     <Stack>
@@ -30,9 +22,7 @@ const InputField = ({ labelStart, labelEnd, defaultValue = '', placeholder }: In
       </Stack>
       <TextField
         variant="outlined"
-        value={value}
-        onChange={handleChange}
-        placeholder={placeholder}
+        {...props}
       />
     </Stack>
   );

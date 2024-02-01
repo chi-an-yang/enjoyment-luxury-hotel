@@ -1,4 +1,5 @@
-import { Stack, Typography, Button, TextField, Link } from '@mui/material';
+import { Stack, Typography, Button, TextField, Link, FormControlLabel } from '@mui/material';
+import Checkbox from '@src/ui-components/Checkbox';
 import InputField from '@src/ui-components/InputField';
 
 const MuiComponents = () => {
@@ -20,7 +21,7 @@ const MuiComponents = () => {
           <TextField variant="outlined" placeholder="請輸入密碼" value="jessica@sample.com" />
           <TextField variant="outlined" placeholder="請輸入密碼" />
         </Stack>
-        <Stack spacing={2} bgcolor={(theme)=> theme.palette.neutral[40]} p={2}>
+        <Stack spacing={2} bgcolor={(theme) => theme.palette.neutral[40]} p={2}>
           <Typography variant="subtitle1">本次需求元件</Typography>
           <InputField labelStart="密碼" labelEnd="必填" defaultValue="" placeholder="請輸入密碼" />
         </Stack>
@@ -29,6 +30,14 @@ const MuiComponents = () => {
         <Typography variant="subtitle1">Link</Typography>
         <Stack spacing={2} direction="row">
           <Link href="https://google.com">忘記密碼？</Link>
+        </Stack>
+        <Typography variant="subtitle1">Link</Typography>
+        <Stack spacing={2} direction="row">
+          <FormControlLabel
+            control={<Checkbox defaultChecked value="remember" />}
+            slotProps={{ typography: { variant: 'Title_16px_B' }}}
+            label="記住帳號"
+          />
         </Stack>
       </Stack>
     </Stack>
