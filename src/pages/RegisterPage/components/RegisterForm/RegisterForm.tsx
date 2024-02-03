@@ -5,7 +5,9 @@ import StepLabel from '@mui/material/StepLabel';
 import Stack from '@mui/material/Stack';
 import InputField from '@src/ui-components/InputField';
 import Button from '@mui/material/Button';
-import { FormControlLabel, Typography, useTheme } from '@mui/material';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Typography from '@mui/material/Typography';
+import useTheme from '@mui/material/styles/useTheme';
 import { FormEvent, useState } from 'react';
 import Checkbox from '@src/ui-components/Checkbox';
 import DateSelect from '@src/common/DateSelect';
@@ -73,7 +75,9 @@ const AccountStep = ({ step, onSubmit }: StepViewProps) => {
   );
 };
 
-const ProfileStep = ({ step, onSubmit }: StepViewProps) => {
+type ProfileStep = StepViewProps & { onBack: () => void };
+
+const ProfileStep = ({ step, onSubmit, onBack }: ProfileStep) => {
   const { palette } = useTheme();
   if (step !== 1) return null;
 
@@ -121,15 +125,20 @@ const ProfileStep = ({ step, onSubmit }: StepViewProps) => {
         }}
         label="我已閱讀並同意本網站個資使用規範"
       />
-      <Button type="submit" fullWidth variant="contained" sx={{ py: 2, mt: 3 }}>
-        完成註冊
-      </Button>
+      <Stack direction="row" gap={1}>
+        <Button type="button" onClick={onBack} fullWidth variant="contained" sx={{ py: 2, mt: 3 }}>
+          上一步
+        </Button>
+        <Button type="submit" fullWidth variant="contained" sx={{ py: 2, mt: 3 }}>
+          完成註冊
+        </Button>
+      </Stack>
     </Stack>
   );
 };
 
 const RegisterForm = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState<Step>(0);
 
   const handleAccountSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -142,11 +151,16 @@ const RegisterForm = () => {
     console.log('完成註冊');
   };
 
+  const handleProfileBack = () => {
+    console.log('上一步');
+    setStep(0);
+  };
+
   return (
     <Box>
       <RegisterStepper step={step} />
       <AccountStep step={step} onSubmit={handleAccountSubmit} />
-      <ProfileStep step={step} onSubmit={handleProfileSubmit} />
+      <ProfileStep step={step} onSubmit={handleProfileSubmit} onBack={handleProfileBack} />
     </Box>
   );
 };
