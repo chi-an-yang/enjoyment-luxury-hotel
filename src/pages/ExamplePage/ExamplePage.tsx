@@ -7,6 +7,7 @@ import SelectComponents from './components/SelectComponents';
 import SwiperComponent from './components/SwiperComponent';
 import Footer from '@src/common/Footer';
 import HotelTypography from './components/HotelTypography';
+import TabsComponent from './components/TabsComponent';
 import ToastComponent from './components/ToastComponent';
 
 const ExamplePage = () => {
@@ -36,10 +37,12 @@ const ExamplePage = () => {
 
           <Divider textAlign="center">Toast</Divider>
           <ToastComponent />
-          
+
           <Divider textAlign="center">Loading Modal</Divider>
           <LoadingModalComponents />
-          
+
+          <Divider textAlign="center">Tabs</Divider>
+          <TabsComponent />
         </Stack>
       </Container>
       <Divider textAlign="center">Footer</Divider>
