@@ -7,11 +7,9 @@ import {
   useTheme,
 } from '@mui/material';
 import Logo from '@src/assets/logo.svg?react';
-import { ReactNode } from 'react';
 
 interface LoadingModalProps {
   open: boolean;
-  children?: ReactNode;
 }
 const LoadingModal = ({ open }: LoadingModalProps) => {
   const { palette } = useTheme();
