@@ -43,7 +43,7 @@ const NavMenuListItem = ({
 };
 
 const NavMenuList = ({ showNavMenu }: { showNavMenu: boolean }) => {
-  const username: string = '六角測試專員'; // TODO:之後資料來源替換成 Zustand
+  const username: string = ''; // TODO:之後資料來源替換成 Zustand
   const UserNavMenuListItem = () => {
     return (
       <>

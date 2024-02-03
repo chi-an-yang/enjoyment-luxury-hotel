@@ -1,6 +1,6 @@
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button } from '@mui/material';
+import { Box, Button, ButtonOwnProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import NavbarUser from './NavbarUser';
 
@@ -10,7 +10,7 @@ const NavbarListItem = ({
   name,
 }: {
   url: string;
-  variant?: 'text' | 'contained' | 'outlined';
+  variant?: ButtonOwnProps['variant'];
   name: string;
 }) => {
   return (
