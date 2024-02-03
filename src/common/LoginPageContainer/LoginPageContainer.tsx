@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import registerImageUrl from '@src/assets/images/register.png';
 import lineBgUrl from '@src/assets/images/Line.png';
+import lineMBgUrl from '@src/assets/images/Line-m.png';
 import useTheme from '@mui/material/styles/useTheme';
 import { ReactNode } from 'react';
 
@@ -18,10 +18,10 @@ const lineBg = {
     width: '100%',
     height: '100%',
     position: 'absolute',
-    backgroundImage: `url(${lineBgUrl})`,
+    backgroundImage: {md: `url(${lineBgUrl})`, xs: `url(${lineMBgUrl})`},
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'auto',
-    backgroundPosition: 'center 21%',
+    backgroundPosition: {md: 'center 192px', xs: 'center 104px'},
     opacity: 0.4,
     pointerEvents: 'none',
   },
@@ -35,21 +35,26 @@ const LoginPageContainer = ({ children }: Props) => {
   const { palette } = useTheme();
 
   return (
-    <Grid container component="main" sx={{ minHeight: '100vh', height: '100%', bgcolor: palette.neutral.bgcolor }}>
-      <Grid item xs={false} sm={4} md={6} sx={registerBg} />
-      <Grid
-        item
-        xs={12}
-        sm={8}
-        md={6}
-        display={'flex'}
-        justifyContent={'center'}
-        position={'relative'}
-        sx={lineBg}
-      >
-        <Stack mx={2.5} justifyContent={'center'} height={'100%'} width={'414px'}>
+    <Grid
+      container
+      component="main"
+      justifyContent={'center'}
+      sx={{ minHeight: '100vh', height: '100%', bgcolor: palette.neutral.bgcolor }}
+    >
+      <Grid container maxWidth={'1920px'}>
+        <Grid item xs={false} sm={4} md={6} sx={registerBg} />
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={6}
+          display={'flex'}
+          justifyContent={'center'}
+          position={'relative'}
+          sx={lineBg}
+        >
           {children}
-        </Stack>
+        </Grid>
       </Grid>
     </Grid>
   );
