@@ -216,27 +216,6 @@ const components: ThemeOptions['components'] = {
       },
     },
   },
-  MuiList: {
-    styleOverrides: {
-      root: {
-        width: '260px',
-        borderRadius: '20px',
-        padding: '12px 0px',
-      },
-    },
-  },
-  MuiMenuItem: {
-    styleOverrides: {
-      root: {
-        height: '56px',
-        transition: 'all .3s',
-        '&:hover': {
-          backgroundColor: palette.hotelPrimary[10],
-          color: palette.hotelPrimary[100],
-        },
-      },
-    },
-  },
 };
 
 const theme: ThemeOptions = createTheme({

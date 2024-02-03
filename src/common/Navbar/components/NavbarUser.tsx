@@ -18,6 +18,16 @@ const navbarUserStyle = {
     },
   },
 };
+
+const nvaMenuItemStyle = {
+  height: '56px',
+  transition: 'all .3s',
+  '&:hover': {
+    backgroundColor: (theme: Theme) => theme.palette.hotelPrimary[10],
+    color: (theme: Theme) => theme.palette.hotelPrimary[100],
+  },
+};
+
 const NavbarUser = ({ username }: { username: string }) => {
   const { palette } = useTheme();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -66,8 +76,17 @@ const NavbarUser = ({ username }: { username: string }) => {
         }}
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        slotProps={{
+          paper: {
+            sx: {
+              width: '260px',
+              borderRadius: '20px',
+              padding: '12px 0',
+            },
+          },
+        }}
       >
-        <MenuItem>
+        <MenuItem sx={nvaMenuItemStyle}>
           <Link
             component={RouterLink}
             style={{ textDecoration: 'none', color: 'inherit' }}
@@ -76,7 +95,9 @@ const NavbarUser = ({ username }: { username: string }) => {
             我的帳戶
           </Link>
         </MenuItem>
-        <MenuItem onClick={handleLogout}>登出</MenuItem>
+        <MenuItem onClick={handleLogout} sx={nvaMenuItemStyle}>
+          登出
+        </MenuItem>
       </Menu>
     </Box>
   );
