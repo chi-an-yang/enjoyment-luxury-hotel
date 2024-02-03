@@ -1,7 +1,7 @@
 import Link from '@mui/material/Link';
 import { Theme } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, ButtonOwnProps } from '@mui/material';
 
 const navMenuListItemStyle = {
   display: 'flex',
@@ -22,7 +22,7 @@ const NavMenuListItem = ({
   name,
 }: {
   url: string;
-  variant?: 'text' | 'contained' | 'outlined';
+  variant?: ButtonOwnProps['variant'];
   name: string;
 }) => {
   return (
