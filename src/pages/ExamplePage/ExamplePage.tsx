@@ -1,4 +1,5 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
+import LoadingModalComponents from './components/LoadingModalComponents';
 import MuiComponents from './components/MuiComponents';
 import ModalComponents from './components/ModalComponents';
 import ReactQueryComponent from './components/ReactQueryComponent';
@@ -35,6 +36,10 @@ const ExamplePage = () => {
 
           <Divider textAlign="center">Toast</Divider>
           <ToastComponent />
+          
+          <Divider textAlign="center">Loading Modal</Divider>
+          <LoadingModalComponents />
+          
         </Stack>
       </Container>
       <Divider textAlign="center">Footer</Divider>
