@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Box, IconButton, Toolbar, useTheme, AppBar, Paper } from '@mui/material';
+import { Theme } from '@mui/material/styles';
 import { MdMenu, MdClose } from 'react-icons/md';
 import Logo from '@src/assets/logo.svg?react';
 import NavbarList from './components/NavbarList';
@@ -10,46 +11,58 @@ interface NavbarProps {
   navbarListShow?: boolean;
 }
 
+const navMenuButtonStyle = {
+  position: 'fixed',
+  top: '20px',
+  right: '20px',
+  zIndex: 0,
+  padding: 0,
+  width: '48px',
+  height: '48px',
+  color: (theme: Theme) => theme.palette.neutral[0],
+};
+
+const NavMenuCloseButton = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <IconButton size="large" onClick={onClick} color="inherit" sx={navMenuButtonStyle}>
+      <MdClose size="48" />
+    </IconButton>
+  );
+};
+const NavMenuOpenButton = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <IconButton size="small" onClick={onClick} color="inherit" sx={navMenuButtonStyle}>
+      <MdMenu />
+    </IconButton>
+  );
+};
+
 const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) => {
   const { palette } = useTheme();
-  const navMenuButtonStyle = {
-    position: 'fixed',
-    top: '20px',
-    right: '20px',
-    zIndex: 0,
-    padding: 0,
-    width: '48px',
-    height: '48px',
-    color: palette.neutral[0],
-  };
   const [showNavMenu, setShowNavMenu] = useState<boolean>(false);
 
   const handleNavMenuClose = () => {
     setShowNavMenu(false);
   };
-  const NavMenuCloseButton = () => {
-    return (
-      <IconButton size="large" onClick={handleNavMenuClose} color="inherit" sx={navMenuButtonStyle}>
-        <MdClose size="48" />
-      </IconButton>
-    );
-  };
 
   const handleNavMenuOpen = () => {
     setShowNavMenu(true);
   };
-  const NavMenuOpenButton = () => {
+
+  const NavMenuButton = () => {
     return (
-      <IconButton size="small" onClick={handleNavMenuOpen} color="inherit" sx={navMenuButtonStyle}>
-        <MdMenu />
-      </IconButton>
+      <>
+        {showNavMenu ? (
+          <NavMenuCloseButton onClick={handleNavMenuClose} />
+        ) : (
+          <NavMenuOpenButton onClick={handleNavMenuOpen} />
+        )}
+      </>
     );
   };
-
-  const NavMenuButton = showNavMenu ? NavMenuCloseButton : NavMenuOpenButton;
-
+  // transparent
   return (
-    <AppBar position="sticky" color="transparent" className={hasBackground ? 'hasBackground' : ''}>
+    <AppBar position="sticky" color="info" className={hasBackground ? 'hasBackground' : ''}>
       <Toolbar
         sx={{
           display: 'flex',
