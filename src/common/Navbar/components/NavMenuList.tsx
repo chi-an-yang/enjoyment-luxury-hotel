@@ -45,6 +45,7 @@ const NavMenuListItem = ({
 const NavMenuList = ({ showNavMenu }: { showNavMenu: boolean }) => {
   const username: string = '六角測試專員'; // TODO:之後資料來源替換成 Zustand
   const userinfo = username ? '我的帳戶' : '會員登入';
+  const userurl = username ? 'user-info' : 'login';
   const handleLogout = () => {
     // 登出
   };
@@ -74,7 +75,7 @@ const NavMenuList = ({ showNavMenu }: { showNavMenu: boolean }) => {
       className={showNavMenu ? 'open' : ''}
     >
       <NavMenuListItem url="rooms" name="客房旅館" />
-      <NavMenuListItem url="user-info" name={userinfo} />
+      <NavMenuListItem url={userurl} name={userinfo} />
       <NavMenuListItem url="reservation" variant="contained" name="立即訂房" />
       {username && (
         <Button sx={navMenuListItemStyle} onClick={handleLogout}>
