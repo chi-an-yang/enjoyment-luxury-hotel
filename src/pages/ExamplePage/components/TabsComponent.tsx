@@ -1,4 +1,4 @@
-import { Stack, Typography, Card, CardContent } from '@mui/material';
+import { Stack, Typography, Card, CardContent, useTheme } from '@mui/material';
 import CustomTabsComponent from '@src/ui-components/Tab';
 
 const ExampleCard = ({ txt, isFlex1 = false }: { txt: string; isFlex1?: boolean }) => (
@@ -15,8 +15,9 @@ const ExampleCard = ({ txt, isFlex1 = false }: { txt: string; isFlex1?: boolean 
 );
 
 const TabsComponent = () => {
+  const { palette } = useTheme();
   return (
-    <Stack direction="row">
+    <Stack direction="row" bgcolor={palette.neutral[100]} p={2}>
       <CustomTabsComponent
         labels={['個人資料', '我的訂單']}
         panels={[

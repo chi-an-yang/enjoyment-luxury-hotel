@@ -41,12 +41,18 @@ export default function BasicTabs({ labels, panels }: BasicTabsProps) {
           display: 'flex',
           justifyContent: 'center',
         },
+        '.MuiButtonBase-root': {
+          color: palette.neutral[0],
+        },
+        '.MuiButtonBase-root.Mui-selected': {
+          color: palette.primary.main,
+        },
         '.MuiTabs-indicator::before': {
           content: '""',
           backgroundColor: palette.primary.main,
           display: 'block',
           height: '100%',
-          width: '40px',
+          width: '30px',
           borderRadius: '2px',
         },
       }}
