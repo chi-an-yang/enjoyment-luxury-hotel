@@ -5,10 +5,12 @@ import { Theme } from '@mui/material/styles';
 import NavbarUser from './NavbarUser';
 
 const NavbarListItem = ({
+  className,
   url,
   variant = 'text',
   name,
 }: {
+  className: string;
   url: string;
   variant?: ButtonOwnProps['variant'];
   name: string;
@@ -20,7 +22,7 @@ const NavbarListItem = ({
         marginLeft: '16px',
         padding: '16px',
       }}
-      className={url}
+      className={className}
       variant={variant}
     >
       <Link
@@ -32,7 +34,7 @@ const NavbarListItem = ({
           },
         }}
         component={RouterLink}
-        to={`/${url}`}
+        to={url}
       >
         {name}
       </Link>
@@ -51,17 +53,17 @@ const NavbarList = () => {
         '.reservation': {
           width: '128px',
           height: '56px',
-          display: 'flex',
-          padding: '16px 32px',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: '8px',
         },
       }}
     >
-      <NavbarListItem url="rooms" name="客房旅館" />
+      <NavbarListItem className="rooms" url="/rooms" name="客房旅館" />
       <NavbarUser username={username} />
-      <NavbarListItem url="reservation" variant="contained" name="立即訂房" />
+      <NavbarListItem
+        className="reservation"
+        url="/reservation"
+        variant="contained"
+        name="立即訂房"
+      />
     </Box>
   );
 };

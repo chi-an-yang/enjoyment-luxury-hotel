@@ -4,18 +4,17 @@ import { Link, Box, Button, Menu, SvgIcon, MenuItem, useTheme } from '@mui/mater
 import { Theme } from '@mui/material/styles';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 
-const navbarUserStyle = {
-  '.button': {
-    color: (theme: Theme) => theme.palette.neutral[0],
-    marginLeft: '16px',
-    padding: '16px',
-  },
-  '.link': {
-    textDecoration: 'none',
-    color: 'white',
-    '&:first-of-type': {
-      marginLeft: '0',
-    },
+const navbarUserButtonStyle = {
+  color: (theme: Theme) => theme.palette.neutral[0],
+  marginLeft: '16px',
+  padding: '16px',
+};
+
+const navbarUserLinkStyle = {
+  textDecoration: 'none',
+  color: 'white',
+  '&:first-of-type': {
+    marginLeft: '0',
   },
 };
 
@@ -43,19 +42,17 @@ const NavbarUser = ({ username }: { username: string }) => {
   };
   if (!username) {
     return (
-      <Box sx={navbarUserStyle}>
-        <Button className="button">
-          <Link component={RouterLink} to="/login" className="link login">
-            會員登入
-          </Link>
-        </Button>
-      </Box>
+      <Button sx={navbarUserButtonStyle}>
+        <Link component={RouterLink} to="/login" sx={navbarUserLinkStyle} className="login">
+          會員登入
+        </Link>
+      </Button>
     );
   }
   return (
-    <Box sx={navbarUserStyle}>
+    <>
       <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-        <Button className="button" onClick={handleMenu}>
+        <Button sx={navbarUserButtonStyle} onClick={handleMenu}>
           <SvgIcon sx={{ color: palette.neutral[0] }}>
             <MdOutlineAccountCircle />
           </SvgIcon>
@@ -99,7 +96,7 @@ const NavbarUser = ({ username }: { username: string }) => {
           登出
         </MenuItem>
       </Menu>
-    </Box>
+    </>
   );
 };
 

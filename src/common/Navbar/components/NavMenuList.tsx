@@ -45,15 +45,8 @@ const NavMenuListItem = ({
 const NavMenuList = ({ showNavMenu }: { showNavMenu: boolean }) => {
   const username: string = ''; // TODO:之後資料來源替換成 Zustand
   const UserNavMenuListItem = () => {
-    return (
-      <>
-        {username ? (
-          <NavMenuListItem url="user-info" name="我的帳戶" />
-        ) : (
-          <NavMenuListItem url="login" name="會員登入" />
-        )}
-      </>
-    );
+    if (username) return <NavMenuListItem url="user-info" name="我的帳戶" />;
+    return <NavMenuListItem url="login" name="會員登入" />;
   };
 
   const handleLogout = () => {

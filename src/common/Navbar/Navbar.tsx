@@ -50,18 +50,12 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
   };
 
   const NavMenuButton = () => {
-    return (
-      <>
-        {showNavMenu ? (
-          <NavMenuCloseButton onClick={handleNavMenuClose} />
-        ) : (
-          <NavMenuOpenButton onClick={handleNavMenuOpen} />
-        )}
-      </>
-    );
+    if (showNavMenu) return <NavMenuCloseButton onClick={handleNavMenuClose} />;
+    return <NavMenuOpenButton onClick={handleNavMenuOpen} />;
   };
+  // transparent
   return (
-    <AppBar position="sticky" color="transparent" className={hasBackground ? 'hasBackground' : ''}>
+    <AppBar position="sticky" color="info" className={hasBackground ? 'hasBackground' : ''}>
       <Toolbar
         sx={{
           display: 'flex',
