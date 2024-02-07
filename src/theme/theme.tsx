@@ -96,15 +96,33 @@ declare module '@mui/material/Typography' {
 
 const palette: ThemeOptions['palette'] = {
   primary: {
-    light: '#AE9984',
+    light: '#D0B79F',
     main: '#BF9D7D',
     dark: '#7B6651',
     contrastText: '#fff',
   },
+  // success: {
+  //   light: '#BCFBBD',
+  //   main: '#52DD7E',
+  //   dark: '#299F65',
+  //   // contrastText: '#fff',
+  // },
+  // info: {
+  //   light: '#B1EFFD',
+  //   main: '#3BADEF',
+  //   dark: '#1D66AC',
+  //   // contrastText: '#fff',
+  // },
+  // error: {
+  //   light: '#F5CCD1',
+  //   main: '#DA3E51',
+  //   dark: '#C22538',
+  //   // contrastText: '#fff',
+  // },
   hotelPrimary: {
     120: '#7B6651',
     100: '#BF9D7D',
-    80: '#AE9984',
+    80: '#D0B79F',
     60: '#E1D1C2',
     40: '#F1EAE4',
     10: '#F7F2EE',
@@ -182,9 +200,40 @@ const components: ThemeOptions['components'] = {
     styleOverrides: {
       root: {
         marginLeft: 0,
-      }
-    }
-  }
+      },
+    },
+  },
+
+  MuiStepIcon: {
+    styleOverrides: {
+      root: {
+        // fontSize: '32px', // 設計稿 32px 看起來有點醜...先註解
+        outline: `1px solid ${palette.neutral[60]}`,
+        borderRadius: '80px',
+        '&.Mui-active': {
+          outline: 0,
+        },
+        '&.Mui-completed': {
+          outline: 0,
+          backgroundColor: palette.neutral[0],
+        },
+      },
+    },
+  },
+  MuiStepLabel: {
+    styleOverrides: {
+      label: {
+        fontSize: '16px',
+        color: palette.neutral[60],
+        '&.Mui-active': {
+          color: palette.neutral[0],
+        },
+        '&.Mui-completed': {
+          color: palette.neutral[0],
+        },
+      },
+    },
+  },
 };
 
 const theme: ThemeOptions = createTheme({

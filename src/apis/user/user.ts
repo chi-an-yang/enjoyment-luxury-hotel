@@ -54,7 +54,7 @@ export const login = async (params: {
   email: string;
   password: string;
 }): Promise<LoginResponse> => {
-  const response = await axios.post('/api/v1/user/login', { params });
+  const response = await axios.post('/api/v1/user/login', params);
 
   return response.data;
 };
