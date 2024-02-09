@@ -16,25 +16,43 @@ const ExampleCard = ({ txt, isFlex1 = false }: { txt: string; isFlex1?: boolean 
 
 const TabsComponent = () => {
   const { palette } = useTheme();
+
+  const renderTabs = (description: string, index?: number) => {
+    return (
+      <>
+        <Typography variant="body1">Tabs ({description})</Typography>
+        <Stack direction="row" bgcolor={palette.neutral[100]} p={2}>
+          <CustomTabsComponent
+            index={index}
+            tabs={[
+              {
+                label: '個人資料',
+                panel: (
+                  <Stack
+                    direction={{
+                      xs: 'column',
+                      md: 'row',
+                    }}
+                    spacing={3}
+                  >
+                    <ExampleCard txt="修改帳號資料" />
+                    <ExampleCard txt="基本資料" isFlex1 />
+                  </Stack>
+                ),
+              },
+              { label: '我的訂單', panel: <ExampleCard txt="我的訂單" isFlex1 /> },
+            ]}
+          />
+        </Stack>
+      </>
+    );
+  };
+
   return (
-    <Stack direction="row" bgcolor={palette.neutral[100]} p={2}>
-      <CustomTabsComponent
-        labels={['個人資料', '我的訂單']}
-        panels={[
-          <Stack
-            direction={{
-              xs: 'column',
-              md: 'row',
-            }}
-            spacing={3}
-          >
-            <ExampleCard txt="修改帳號資料" />
-            <ExampleCard txt="基本資料" isFlex1 />
-          </Stack>,
-          <ExampleCard txt="我的訂單" isFlex1 />,
-        ]}
-      />
-    </Stack>
+    <>
+      {renderTabs('Default index')}
+      {renderTabs('Designated Index', 1)}
+    </>
   );
 };
 

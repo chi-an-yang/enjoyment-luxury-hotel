@@ -19,13 +19,17 @@ const CustomTabPanel = ({ children, currentIndex, index }: CustomTabPanelProps) 
   );
 };
 
-interface BasicTabsProps {
-  labels: string[];
-  panels: ReactNode[];
+interface TabData {
+  label: string;
+  panel: ReactNode;
 }
-export default function BasicTabs({ labels, panels }: BasicTabsProps) {
+interface BasicTabsProps {
+  tabs: TabData[];
+  index?: number;
+}
+export default function BasicTabs({ tabs, index }: BasicTabsProps) {
   const { palette } = useTheme();
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentIndex, setCurrentIndex] = React.useState(index ?? 0);
 
   const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
     setCurrentIndex(newIndex);
@@ -58,15 +62,13 @@ export default function BasicTabs({ labels, panels }: BasicTabsProps) {
       }}
     >
       <Tabs value={currentIndex} onChange={handleChange} aria-label="tabs">
-        {labels.map((label) => (
-          <Tab key={label} label={label} />
+        {tabs.map((tab) => (
+          <Tab key={tab.label} label={tab.label} />
         ))}
       </Tabs>
-      {panels.map((panel, index) => (
-        <CustomTabPanel key={index} currentIndex={currentIndex} index={index}>
-          {panel}
-        </CustomTabPanel>
-      ))}
+      <CustomTabPanel key={currentIndex} currentIndex={currentIndex} index={currentIndex}>
+        {tabs[currentIndex].panel}
+      </CustomTabPanel>
     </Box>
   );
 }
