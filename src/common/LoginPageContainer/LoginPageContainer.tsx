@@ -4,6 +4,7 @@ import lineBgUrl from '@src/assets/images/Line.png';
 import lineMBgUrl from '@src/assets/images/Line-m.png';
 import useTheme from '@mui/material/styles/useTheme';
 import { ReactNode } from 'react';
+import Navbar from '@src/common/Navbar';
 
 const registerBg = {
   backgroundImage: `url(${registerImageUrl})`,
@@ -18,10 +19,10 @@ const lineBg = {
     width: '100%',
     height: '100%',
     position: 'absolute',
-    backgroundImage: {md: `url(${lineBgUrl})`, xs: `url(${lineMBgUrl})`},
+    backgroundImage: { md: `url(${lineBgUrl})`, xs: `url(${lineMBgUrl})` },
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'auto',
-    backgroundPosition: {md: 'center 192px', xs: 'center 104px'},
+    backgroundPosition: { md: 'center 192px', xs: 'center 104px' },
     opacity: 0.4,
     pointerEvents: 'none',
   },
@@ -39,9 +40,11 @@ const LoginPageContainer = ({ children }: Props) => {
       container
       component="main"
       justifyContent={'center'}
+      direction={'column'}
       sx={{ minHeight: '100vh', height: '100%', bgcolor: palette.neutral.bgcolor }}
     >
-      <Grid container maxWidth={'1920px'}>
+      <Navbar hasBackground navbarListShow={false} />
+      <Grid container maxWidth={'1920px'} flex={'1 0 auto'}>
         <Grid item xs={false} sm={4} md={6} sx={registerBg} />
         <Grid
           item

@@ -13,12 +13,12 @@ interface NavbarProps {
 
 const navMenuButtonStyle = {
   position: 'fixed',
-  top: '20px',
-  right: '20px',
+  top: { xs: '16px', md: '20px' },
+  right: { xs: '12px', md: '20px' },
   zIndex: 0,
   padding: 0,
-  width: '48px',
-  height: '48px',
+  width: { xs: '40px', md: '48px' },
+  height: { xs: '40px', md: '48px' },
   color: (theme: Theme) => theme.palette.neutral[0],
 };
 
@@ -55,7 +55,14 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
   };
 
   return (
-    <AppBar position="sticky" color="transparent" className={hasBackground ? 'hasBackground' : ''}>
+    <AppBar
+      position="sticky"
+      color="transparent"
+      sx={{
+        height: { xs: '72px', md: '120px' },
+      }}
+      className={hasBackground ? 'hasBackground' : ''}
+    >
       <Toolbar
         sx={{
           display: 'flex',
@@ -63,8 +70,8 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
           transition: 'height 1.6s cubic-bezier(0.86, 0, 0.07, 1)',
         }}
       >
-        <Box sx={{ flex: '0 0 auto', height: '72px' }}>
-          <Logo fill={palette.neutral[0]} />
+        <Box sx={{ flex: '0 0 auto', height: { xs: '40px', md: '72px' } }}>
+          <Logo fill={palette.neutral[0]} width={'100%'} height={'100%'} />
         </Box>
         <Box sx={{ display: 'flex', flexGrow: 1 }} />
         <Box sx={{ display: navbarListShow ? 'flex' : 'none' }}>
