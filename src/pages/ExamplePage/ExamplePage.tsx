@@ -36,10 +36,9 @@ const ExamplePage = () => {
 
           <Divider textAlign="center">Toast</Divider>
           <ToastComponent />
-          
+
           <Divider textAlign="center">Loading Modal</Divider>
           <LoadingModalComponents />
-          
         </Stack>
       </Container>
       <Divider textAlign="center">Footer</Divider>

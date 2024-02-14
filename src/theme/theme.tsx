@@ -195,41 +195,23 @@ const components: ThemeOptions['components'] = {
       },
     },
   },
+  MuiAppBar: {
+    styleOverrides: {
+      root: {
+        boxShadow: 'none',
+        '&.hasBackground': {
+          backgroundColor: palette.neutral[100],
+        },
+      },
+    },
+  },
 
   MuiFormHelperText: {
     styleOverrides: {
       root: {
-        marginLeft: 0,
-      },
-    },
-  },
-
-  MuiStepIcon: {
-    styleOverrides: {
-      root: {
-        // fontSize: '32px', // 設計稿 32px 看起來有點醜...先註解
-        outline: `1px solid ${palette.neutral[60]}`,
-        borderRadius: '80px',
-        '&.Mui-active': {
-          outline: 0,
-        },
-        '&.Mui-completed': {
-          outline: 0,
-          backgroundColor: palette.neutral[0],
-        },
-      },
-    },
-  },
-  MuiStepLabel: {
-    styleOverrides: {
-      label: {
-        fontSize: '16px',
-        color: palette.neutral[60],
-        '&.Mui-active': {
-          color: palette.neutral[0],
-        },
-        '&.Mui-completed': {
-          color: palette.neutral[0],
+        '&#menu-appbar > .MuiPaper-root': {
+          padding: '12px 0px',
+          borderRadius: '20px',
         },
       },
     },
