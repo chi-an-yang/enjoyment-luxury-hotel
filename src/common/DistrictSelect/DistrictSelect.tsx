@@ -3,21 +3,20 @@ import { Stack } from '@mui/material';
 import districtJson from '@src/common/DistrictSelect/config/taiwan_districts.json';
 import Select from '@src/ui-components/Select';
 
-export type DistrictSelectProps = { city: string; distinct: string; zipCode: string };
-const DistrictSelect = ({
-  onChange,
-  zipCode,
-}: {
-  onChange: (value: DistrictSelectProps) => void;
-  zipCode?: string;
-}) => {
-  const cityIndex = zipCode
+export type DistrictData = { city: string; distinct: string; zipcode: number };
+
+type DistrictSelectProps = {
+  onChange: (value: DistrictData) => void;
+  zipcode?: number;
+};
+const DistrictSelect = ({ onChange, zipcode }: DistrictSelectProps) => {
+  const cityIndex = zipcode
     ? districtJson.findIndex((cityData) =>
-        cityData.districts.some((districts) => districts.zip === zipCode)
+        cityData.districts.some((districts) => districts.zip === zipcode.toString())
       )
     : 0;
-  const districtIndex = zipCode
-    ? districtJson[cityIndex].districts.findIndex((district) => district.zip === zipCode)
+  const districtIndex = zipcode
+    ? districtJson[cityIndex].districts.findIndex((district) => district.zip === zipcode.toString())
     : 0;
   const [selectedIndices, setSelectedIndices] = useState({
     cityIndex,
@@ -38,7 +37,7 @@ const DistrictSelect = ({
     onChange({
       city: city.name,
       distinct: district.name,
-      zipCode: district.zip,
+      zipcode: Number(district.zip),
     });
   };
 

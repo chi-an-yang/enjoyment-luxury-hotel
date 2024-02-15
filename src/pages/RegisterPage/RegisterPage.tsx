@@ -37,7 +37,7 @@ const LoginLink = () => {
         已經有會員了嗎？
       </Typography>
       {/* 導頁去註冊頁 */}
-      <Link component={RouterLink} to={'/register'} variant="Title_16px_B">
+      <Link component={RouterLink} to={'/login'} variant="Title_16px_B">
         立即登入
       </Link>
     </Box>

@@ -1,22 +1,22 @@
 import { Typography } from '@mui/material';
-import DistrictSelect, { DistrictSelectProps } from '@src/common/DistrictSelect';
-import DateSelect, { DateSelectProps } from '@src/common/DateSelect';
+import DistrictSelect, { DistrictData } from '@src/common/DistrictSelect';
+import DateSelect, { DateString } from '@src/common/DateSelect';
 
 const SelectComponents = () => {
-  const handleDistrictChange = (value: DistrictSelectProps) => {
+  const handleDistrictChange = (value: DistrictData) => {
     console.log(value);
   };
-  const handleDateChange = (value: DateSelectProps) => {
+  const handleDateChange = (value: DateString) => {
     console.log(value);
   };
   return (
     <>
       <Typography variant="body1">District Select</Typography>
       <DistrictSelect onChange={handleDistrictChange} />
-      <DistrictSelect zipCode="882" onChange={handleDistrictChange} />
+      <DistrictSelect zipcode={882} onChange={handleDistrictChange} />
       <Typography variant="body1">Date Select</Typography>
       <DateSelect onChange={handleDateChange} />
-      <DateSelect year={2023} month={12} date={31} onChange={handleDateChange} />
+      <DateSelect value='2023/12/31' onChange={handleDateChange} />
     </>
   );
 };
