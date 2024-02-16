@@ -1,24 +1,6 @@
 import { Tabs, Tab, Box, useTheme } from '@mui/material';
 import React, { ReactNode } from 'react';
 
-interface CustomTabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  currentIndex: number;
-}
-const CustomTabPanel = ({ children, currentIndex, index }: CustomTabPanelProps) => {
-  return (
-    <div
-      role="tabpanel"
-      hidden={currentIndex !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-    >
-      {currentIndex === index && <Box sx={{ paddingY: 4 }}>{children}</Box>}
-    </div>
-  );
-};
-
 interface TabData {
   label: string;
   panel: ReactNode;
@@ -66,9 +48,9 @@ export default function BasicTabs({ tabs, index }: BasicTabsProps) {
           <Tab key={tab.label} label={tab.label} />
         ))}
       </Tabs>
-      <CustomTabPanel key={currentIndex} currentIndex={currentIndex} index={currentIndex}>
-        {tabs[currentIndex].panel}
-      </CustomTabPanel>
+      <div role="tabpanel" id="simple-tabpanel" aria-labelledby="simple-tab">
+        <Box sx={{ paddingY: 4 }}>{tabs[currentIndex].panel}</Box>
+      </div>
     </Box>
   );
 }
