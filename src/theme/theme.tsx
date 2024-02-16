@@ -96,15 +96,33 @@ declare module '@mui/material/Typography' {
 
 const palette: ThemeOptions['palette'] = {
   primary: {
-    light: '#AE9984',
+    light: '#D0B79F',
     main: '#BF9D7D',
     dark: '#7B6651',
     contrastText: '#fff',
   },
+  // success: {
+  //   light: '#BCFBBD',
+  //   main: '#52DD7E',
+  //   dark: '#299F65',
+  //   // contrastText: '#fff',
+  // },
+  // info: {
+  //   light: '#B1EFFD',
+  //   main: '#3BADEF',
+  //   dark: '#1D66AC',
+  //   // contrastText: '#fff',
+  // },
+  // error: {
+  //   light: '#F5CCD1',
+  //   main: '#DA3E51',
+  //   dark: '#C22538',
+  //   // contrastText: '#fff',
+  // },
   hotelPrimary: {
     120: '#7B6651',
     100: '#BF9D7D',
-    80: '#AE9984',
+    80: '#D0B79F',
     60: '#E1D1C2',
     40: '#F1EAE4',
     10: '#F7F2EE',
@@ -177,14 +195,27 @@ const components: ThemeOptions['components'] = {
       },
     },
   },
+  MuiAppBar: {
+    styleOverrides: {
+      root: {
+        boxShadow: 'none',
+        '&.hasBackground': {
+          backgroundColor: palette.neutral[100],
+        },
+      },
+    },
+  },
 
   MuiFormHelperText: {
     styleOverrides: {
       root: {
-        marginLeft: 0,
-      }
-    }
-  }
+        '&#menu-appbar > .MuiPaper-root': {
+          padding: '12px 0px',
+          borderRadius: '20px',
+        },
+      },
+    },
+  },
 };
 
 const theme: ThemeOptions = createTheme({
