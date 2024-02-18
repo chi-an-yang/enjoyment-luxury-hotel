@@ -1,0 +1,242 @@
+import { Typography, Theme, Box, useTheme, useMediaQuery } from '@mui/material';
+
+const SectionHeroHotelHeadingDesktop = () => {
+  return (
+    <Box
+      component={'div'}
+      justifyContent={'center'}
+      alignItems={'center'}
+      width={'100%'}
+      maxWidth={'924px'}
+    >
+      <Box
+        component={'div'}
+        width={'100%'}
+        height={'678px'}
+        borderRadius={'80px'}
+        display={'flex'}
+        justifyContent={'flex-start'}
+        alignItems={'center'}
+        sx={{
+          borderTop: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
+          borderRight: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
+          position: 'relative',
+          '::before': {
+            content: '""',
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            opacity: 1,
+            backdropFilter: 'blur(10px)',
+            borderRadius: '80px',
+            zIndex: -1,
+            background: (theme: Theme) =>
+              `linear-gradient(180deg, ${theme.palette.neutral['transparent']}, ${theme.palette.neutral['transparent30']})`,
+          },
+        }}
+      >
+        <Box
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+          alignItems={'flex-start'}
+          component={'div'}
+          sx={{ transform: 'translateX(-48px)' }}
+        >
+          <Typography
+            variant="Display_100px_B"
+            mb={1}
+            sx={{ color: (theme: Theme) => `${theme.palette.neutral[0]}` }}
+          >
+            高雄
+          </Typography>
+          <Typography
+            variant="Display_100px_B"
+            mb={3}
+            sx={{ color: (theme: Theme) => `${theme.palette.neutral[0]}` }}
+          >
+            豪華住宿之選
+          </Typography>
+          <Typography
+            variant="H3_32px_B"
+            mb={'60px'}
+            sx={{ color: (theme: Theme) => `${theme.palette.neutral[40]}` }}
+          >
+            我們致力於為您提供無與倫比的奢華體驗與優質服務
+          </Typography>
+          <Box
+            component={'div'}
+            display={'flex'}
+            justifyContent={'flex-end'}
+            alignItems={'center'}
+            width={'772px'}
+            height={'116px'}
+            borderRadius={'8px'}
+            padding={'40px'}
+            sx={{
+              transition: 'all .3s',
+              cursor: 'pointer',
+              backgroundColor: (theme: Theme) => `${theme.palette.neutral[0]}`,
+              color: (theme: Theme) => theme.palette.hotelPrimary[100],
+              '&:hover': {
+                backgroundColor: (theme: Theme) => theme.palette.hotelPrimary[100],
+                color: (theme: Theme) => theme.palette.neutral[0],
+                '> div': {
+                  backgroundColor: (theme: Theme) => theme.palette.neutral[0],
+                },
+              },
+            }}
+          >
+            <Typography
+              variant="H5_24px_B"
+              sx={{
+                color: 'inherit',
+              }}
+            >
+              立即訂房
+            </Typography>
+            <Box
+              component={'div'}
+              display={'flex'}
+              width={'150px'}
+              height={'1px'}
+              ml={2}
+              sx={{
+                backgroundColor: (theme: Theme) => theme.palette.hotelPrimary[100],
+              }}
+            />
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+const SectionHeroHotelHeadingMobile = () => {
+  return (
+    <Box
+      component={'div'}
+      display={'flex'}
+      justifyContent={'flex-end'}
+      alignItems={'center'}
+      width={'100%'}
+      maxWidth={'100vw'}
+      padding={'0 20px'}
+    >
+      <Box
+        component={'div'}
+        width={'290px'}
+        borderRadius={'40px'}
+        display={'flex'}
+        justifyContent={'flex-start'}
+        alignItems={'center'}
+        sx={{
+          height: { xs: '420px', md: '678px' },
+          borderTop: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
+          borderRight: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
+          position: 'relative',
+          '::before': {
+            content: '""',
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            opacity: 1,
+            backdropFilter: 'blur(10px)',
+            borderRadius: '40px',
+            zIndex: -1,
+            background: (theme: Theme) =>
+              `linear-gradient(180deg, ${theme.palette.neutral['transparent']}, ${theme.palette.neutral['transparent30']})`,
+          },
+        }}
+      >
+        <Box
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+          alignItems={'flex-start'}
+          component={'div'}
+          minWidth={'310px'}
+          sx={{ transform: 'translateX(-40px)' }}
+        >
+          <Typography
+            variant="H1_48px_B"
+            mb={1}
+            sx={{ color: (theme: Theme) => `${theme.palette.neutral[0]}` }}
+          >
+            高雄
+          </Typography>
+          <Typography
+            variant="H1_48px_B"
+            mb={3}
+            sx={{ color: (theme: Theme) => `${theme.palette.neutral[0]}` }}
+          >
+            豪華住宿之選
+          </Typography>
+          <Typography
+            variant="Body_16px_R"
+            mb={'40px'}
+            sx={{ color: (theme: Theme) => `${theme.palette.neutral[40]}` }}
+          >
+            我們致力於為您提供無與倫比的奢華體驗與優質服務
+          </Typography>
+          <Box
+            component={'div'}
+            display={'flex'}
+            justifyContent={'flex-end'}
+            alignItems={'center'}
+            width={'100%'}
+            height={'100%'}
+            borderRadius={'8px'}
+            padding={'20px'}
+            sx={{
+              transition: 'all .3s',
+              cursor: 'pointer',
+              backgroundColor: (theme: Theme) => `${theme.palette.neutral[0]}`,
+              color: (theme: Theme) => theme.palette.hotelPrimary[100],
+              '&:hover': {
+                backgroundColor: (theme: Theme) => theme.palette.hotelPrimary[100],
+                color: (theme: Theme) => theme.palette.neutral[0],
+                '> span': {
+                  color: (theme: Theme) => theme.palette.neutral[0],
+                },
+                '> div': {
+                  backgroundColor: (theme: Theme) => theme.palette.neutral[0],
+                },
+              },
+            }}
+          >
+            <Typography
+              variant="Body_16px_R"
+              sx={{
+                color: (theme: Theme) => theme.palette.neutral[100],
+              }}
+            >
+              立即訂房
+            </Typography>
+            <Box
+              component={'div'}
+              display={'flex'}
+              width={'80px'}
+              height={'1px'}
+              ml={2}
+              sx={{
+                backgroundColor: (theme: Theme) => theme.palette.neutral[100],
+              }}
+            />
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+const SectionHeroHotelHeading = () => {
+  const { breakpoints } = useTheme();
+  const isDesktop = useMediaQuery(breakpoints.up('md'));
+  return isDesktop ? <SectionHeroHotelHeadingDesktop /> : <SectionHeroHotelHeadingMobile />;
+};
+
+export default SectionHeroHotelHeading;

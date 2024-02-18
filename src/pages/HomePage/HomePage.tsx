@@ -24,6 +24,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Navbar from '@src/common/Navbar';
+import SectionHero from './components/SectionHero';
 
 function Copyright() {
   return (
@@ -43,9 +44,9 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function HomePage() {
   return (
     <>
-      <Navbar />
       <main>
-        {/* Hero unit */}
+        <Navbar />
+        <SectionHero />
         <Box
           sx={{
             bgcolor: 'background.paper',

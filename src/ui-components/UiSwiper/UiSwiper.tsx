@@ -1,4 +1,5 @@
 import { Box, useTheme } from '@mui/material';
+
 // import required modules
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
@@ -15,9 +16,10 @@ interface UiSwiperItemsProps {
 interface UiSwiperProps {
   items: UiSwiperItemsProps[];
   navigation?: boolean;
+  darkMode?: boolean;
 }
 
-const UiSwiper = ({ items, navigation = false }: UiSwiperProps) => {
+const UiSwiper = ({ items, navigation = false, darkMode = false }: UiSwiperProps) => {
   const { palette } = useTheme();
   const uiSwiperStyle = {
     '.swiper': {
@@ -42,6 +44,21 @@ const UiSwiper = ({ items, navigation = false }: UiSwiperProps) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      position: 'relative',
+    },
+    '.swiper-slide.dark': {
+      '&::after': {
+        content: '""',
+        opacity: 0.6,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: 1,
+        background: palette.neutral[100],
+      },
     },
     '.swiper-slide img': {
       display: 'block',
@@ -99,7 +116,7 @@ const UiSwiper = ({ items, navigation = false }: UiSwiperProps) => {
         className="mySwiper"
       >
         {items.map(({ src, name }) => (
-          <SwiperSlide key={name}>
+          <SwiperSlide key={name} className={darkMode ? 'dark' : ''}>
             <img src={src} alt={name} />
           </SwiperSlide>
         ))}
