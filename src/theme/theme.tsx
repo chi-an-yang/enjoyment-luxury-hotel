@@ -42,7 +42,6 @@ declare module '@mui/material/styles' {
       60: string;
       40: string;
       10: string;
-      heroBorder: string;
     };
     neutral: {
       bgcolor: string;
@@ -52,7 +51,6 @@ declare module '@mui/material/styles' {
       40: string;
       10: string;
       0: string;
-      transparent30: string;
       transparent: string;
     };
   }
@@ -66,7 +64,6 @@ declare module '@mui/material/styles' {
       60: string;
       40: string;
       10: string;
-      heroBorder: string;
     };
     neutral: {
       bgcolor: string;
@@ -76,7 +73,6 @@ declare module '@mui/material/styles' {
       40: string;
       10: string;
       0: string;
-      transparent30: string;
       transparent: string;
     };
   }
@@ -132,7 +128,6 @@ const palette: ThemeOptions['palette'] = {
     60: '#E1D1C2',
     40: '#F1EAE4',
     10: '#F7F2EE',
-    heroBorder: '#F5F7F9',
   },
   neutral: {
     bgcolor: '#140F0A',
@@ -142,7 +137,6 @@ const palette: ThemeOptions['palette'] = {
     40: '#ECECEC',
     10: '#F9F9F9',
     0: '#FFFFFF',
-    transparent30: 'rgba(255, 255, 255, 0.3)',
     transparent: 'rgba(255, 255, 255, 0)',
   },
 };

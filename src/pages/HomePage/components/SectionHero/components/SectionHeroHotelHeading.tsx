@@ -1,5 +1,8 @@
 import { Typography, Theme, Box, useTheme, useMediaQuery } from '@mui/material';
 
+const heroBorder = '#F5F7F9';
+const transparent30 = 'rgba(255, 255, 255, 0.3)';
+
 const SectionHeroHotelHeadingDesktop = () => {
   return (
     <Box
@@ -18,8 +21,8 @@ const SectionHeroHotelHeadingDesktop = () => {
         justifyContent={'flex-start'}
         alignItems={'center'}
         sx={{
-          borderTop: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
-          borderRight: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
+          borderTop: `1px solid ${heroBorder}`,
+          borderRight: `1px solid ${heroBorder}`,
           position: 'relative',
           '::before': {
             content: '""',
@@ -33,7 +36,7 @@ const SectionHeroHotelHeadingDesktop = () => {
             borderRadius: '80px',
             zIndex: -1,
             background: (theme: Theme) =>
-              `linear-gradient(180deg, ${theme.palette.neutral['transparent']}, ${theme.palette.neutral['transparent30']})`,
+              `linear-gradient(180deg, ${theme.palette.neutral['transparent']}, ${transparent30})`,
           },
         }}
       >
@@ -133,8 +136,8 @@ const SectionHeroHotelHeadingMobile = () => {
         alignItems={'center'}
         sx={{
           height: { xs: '420px', md: '678px' },
-          borderTop: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
-          borderRight: (theme: Theme) => `1px solid ${theme.palette.hotelPrimary['heroBorder']}`,
+          borderTop: `1px solid ${heroBorder}`,
+          borderRight: `1px solid ${heroBorder}`,
           position: 'relative',
           '::before': {
             content: '""',
@@ -148,7 +151,7 @@ const SectionHeroHotelHeadingMobile = () => {
             borderRadius: '40px',
             zIndex: -1,
             background: (theme: Theme) =>
-              `linear-gradient(180deg, ${theme.palette.neutral['transparent']}, ${theme.palette.neutral['transparent30']})`,
+              `linear-gradient(180deg, ${theme.palette.neutral['transparent']}, ${transparent30})`,
           },
         }}
       >
