@@ -16,10 +16,10 @@ interface UiSwiperItemsProps {
 interface UiSwiperProps {
   items: UiSwiperItemsProps[];
   navigation?: boolean;
-  darkMode?: boolean;
+  mask?: boolean;
 }
 
-const UiSwiper = ({ items, navigation = false, darkMode = false }: UiSwiperProps) => {
+const UiSwiper = ({ items, navigation = false, mask = false }: UiSwiperProps) => {
   const { palette } = useTheme();
   const uiSwiperStyle = {
     '.swiper': {
@@ -116,7 +116,7 @@ const UiSwiper = ({ items, navigation = false, darkMode = false }: UiSwiperProps
         className="mySwiper"
       >
         {items.map(({ src, name }) => (
-          <SwiperSlide key={name} className={darkMode ? 'dark' : ''}>
+          <SwiperSlide key={name} className={mask ? 'dark' : ''}>
             <img src={src} alt={name} />
           </SwiperSlide>
         ))}
