@@ -203,7 +203,7 @@ const components: ThemeOptions['components'] = {
       root: {
         boxShadow: 'none',
         '&.hasBackground': {
-          backgroundColor: palette.neutral[100],
+          backgroundColor: palette.neutral['bgcolor'],
         },
       },
     },
