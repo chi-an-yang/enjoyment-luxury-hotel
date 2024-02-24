@@ -19,25 +19,30 @@ interface RegisterFormSubmitData {
 
 interface RegisterFormState {
   submitData: RegisterFormSubmitData;
-  setAccountData: (data: AccountStepFormValues)=> void;
-  setProfileData: (data: ProfileStepFormValues)=> void;
+  setAccountData: (data: AccountStepFormValues) => void;
+  setProfileData: (data: ProfileStepFormValues) => void;
+  resetData: () => void;
 }
+
+const initialState = {
+  submitData: {
+    email: '',
+    password: '',
+    validPassword: '',
+    name: '',
+    phone: '',
+    isAgreePolicy: false,
+    birthday: '1901/1/1',
+    address: {
+      zipcode: 100,
+      detail: '',
+    },
+  },
+};
 
 export const useRegisterFormStore = create(
   immer<RegisterFormState>((set) => ({
-    submitData: {
-      email: '',
-      password: '',
-      validPassword: '',
-      name: '',
-      phone: '',
-      isAgreePolicy: false,
-      birthday: '1901/1/1',
-      address: {
-        zipcode: 100,
-        detail: '',
-      },
-    },
+    ...initialState,
     setAccountData: (data) =>
       set((state) => {
         state.submitData = { ...state.submitData, ...data };
@@ -55,5 +60,9 @@ export const useRegisterFormStore = create(
         };
         state.submitData = { ...state.submitData, ...newData };
       }),
+
+    resetData: () => {
+      set(initialState);
+    },
   }))
 );

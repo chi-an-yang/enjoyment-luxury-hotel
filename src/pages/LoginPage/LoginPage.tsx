@@ -24,6 +24,7 @@ const Heading = () => {
         variant={isDesktop ? 'H1_48px_B' : 'H3_32px_B'}
         color={palette.neutral[0]}
         mt={1}
+        position={'relative'}
       >
         立即開始旅程
       </Typography>

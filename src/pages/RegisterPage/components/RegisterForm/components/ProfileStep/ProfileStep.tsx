@@ -36,11 +36,12 @@ const schema = yup
   .required();
 
 type ProfileStepProps = {
+  isSubmitPending: boolean;
   onSubmit: () => void;
   onBack: () => void;
 };
 
-const ProfileStep = ({ onSubmit, onBack }: ProfileStepProps) => {
+const ProfileStep = ({ isSubmitPending, onSubmit, onBack }: ProfileStepProps) => {
   const { palette } = useTheme();
 
   const setProfileData = useRegisterFormStore((state) => state.setProfileData);
@@ -52,7 +53,7 @@ const ProfileStep = ({ onSubmit, onBack }: ProfileStepProps) => {
     address: { detail, zipcode },
   } = useRegisterFormStore((state) => state.submitData);
 
-  const { control, handleSubmit, formState } = useForm<ProfileStepFormValues>({
+  const { control, handleSubmit, formState, getValues } = useForm<ProfileStepFormValues>({
     defaultValues: {
       name,
       phone,
@@ -71,14 +72,14 @@ const ProfileStep = ({ onSubmit, onBack }: ProfileStepProps) => {
     onSubmit();
   };
 
+  const handleBack = () => {
+    setProfileData(getValues());
+    onBack();
+  };
+
   return (
     <Stack component={'form'} gap={2} onSubmit={handleSubmit(handleFormSubmit)}>
-      <HookFormInput
-        control={control}
-        name="name"
-        labelStart="姓名"
-        placeholder="請輸入姓名"
-      />
+      <HookFormInput control={control} name="name" labelStart="姓名" placeholder="請輸入姓名" />
       <HookFormInput
         control={control}
         name="phone"
@@ -117,12 +118,18 @@ const ProfileStep = ({ onSubmit, onBack }: ProfileStepProps) => {
         )}
       />
       <Stack direction="row" gap={1}>
-        <Button type="button" onClick={onBack} fullWidth variant="contained" sx={{ py: 2, mt: 3 }}>
+        <Button
+          type="button"
+          onClick={handleBack}
+          fullWidth
+          variant="contained"
+          sx={{ py: 2, mt: 3 }}
+        >
           上一步
         </Button>
         <Button
           type="submit"
-          disabled={!formState.isValid}
+          disabled={!formState.isValid || isSubmitPending}
           fullWidth
           variant="contained"
           sx={{ py: 2, mt: 3 }}

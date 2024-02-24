@@ -40,17 +40,20 @@ const RegisterStepper = ({ step }: StepperProps) => {
 const RegisterForm = () => {
   const [step, setStep] = useState<FormStep>(FormStep.ACCOUNT);
   const { enqueueSnackbar } = useSnackbar();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // 註冊 mutation
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: userApi.register,
     onSuccess: () => {
       // 註冊成功，跳註冊成功訊息
       enqueueSnackbar('註冊成功', { variant: 'success' });
 
+      // 註冊成功後清空 store
+      useRegisterFormStore.getState().resetData();
+
       // 註冊成功後導頁去登入
-      navigate('/login')
+      navigate('/login');
     },
     onError: (error) => {
       // 登入失敗，跳錯誤訊息
@@ -87,7 +90,11 @@ const RegisterForm = () => {
       <RegisterStepper step={step} />
       {step === FormStep.ACCOUNT && <AccountStep onSubmit={handleAccountSubmit} />}
       {step === FormStep.PROFILE && (
-        <ProfileStep onSubmit={handleProfileSubmit} onBack={handleProfileBack} />
+        <ProfileStep
+          isSubmitPending={isPending}
+          onSubmit={handleProfileSubmit}
+          onBack={handleProfileBack}
+        />
       )}
     </Box>
   );
