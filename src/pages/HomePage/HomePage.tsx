@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Navbar from '@src/common/Navbar';
+import SectionNews from './components/SectionNews';
 import SectionHero from './components/SectionHero';
 import SectionAbout from './components/SectionAbout';
 import Footer from '@src/common/Footer';
@@ -21,6 +22,7 @@ export default function HomePage() {
       <main style={{ backgroundColor: palette.neutral.bgcolor }}>
         <Navbar />
         <SectionHero />
+        <SectionNews />
         <SectionAbout />
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
