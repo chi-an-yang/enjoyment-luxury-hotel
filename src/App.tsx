@@ -7,7 +7,14 @@ import { CssBaseline } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
 
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        gcTime: Infinity,
+      },
+    },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
