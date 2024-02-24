@@ -1,6 +1,9 @@
-import { Grid, Stack, Typography, useTheme } from '@mui/material';
+import { Grid, Stack, useTheme } from '@mui/material';
 import HomePageContainer from '@src/common/HomePageContainer';
+import SectionNewsTitle from './components/SectionNewsTitle';
 import SectionNewsCard from './components/SectionNewsCard';
+import DecoTop from './components/DecoTop';
+import DecoBottom from './components/DecoBottom';
 import NewsAutumn from '@src/assets/images/news/news_autumn.jpg';
 import NewsChill1 from '@src/assets/images/news/news_chill.jpg';
 import NewsChristmas from '@src/assets/images/news/news_christmas.jpg';
@@ -29,43 +32,26 @@ const news = [
   },
 ];
 
-const SectionNewsTitle = () => {
-  const { palette } = useTheme();
-  return (
-    <Grid
-      width={'140px'}
-      position={'relative'}
-      sx={{
-        '&:after': {
-          content: '""',
-          position: 'absolute',
-          display: 'block',
-          width: '140px',
-          height: '2px',
-          bottom: '-40px',
-          background: `linear-gradient(90deg, ${palette.hotelPrimary[100]}, ${palette.neutral[0]})`,
-        },
-      }}
-    >
-      <Typography component={'h1'} variant="H1_48px_B" sx={{ color: palette.hotelPrimary[100] }}>
-        最新消息
-      </Typography>
-    </Grid>
-  );
-};
-
 const SectionNews = () => {
   const { palette } = useTheme();
   return (
-    <Grid bgcolor={palette.hotelPrimary[10]}>
-      <HomePageContainer sx={{ display: 'flex' }}>
-        <Stack p={'120px 0'} mr={10}>
+    <Grid bgcolor={palette.hotelPrimary[10]} position={'relative'}>
+      <DecoTop />
+      <HomePageContainer
+        sx={{
+          display: 'flex',
+          p: { xs: '80px 12px', md: '120px 0' },
+          flexDirection: { xs: 'column', md: 'row' },
+        }}
+      >
+        <Stack mr={10}>
           <SectionNewsTitle />
         </Stack>
-        <Stack p={'120px 0'} spacing={5}>
+        <Stack sx={{ p: { xs: '40px 0', md: '0' } }} spacing={5}>
           {news.map((news) => SectionNewsCard(news))}
         </Stack>
       </HomePageContainer>
+      <DecoBottom />
     </Grid>
   );
 };
