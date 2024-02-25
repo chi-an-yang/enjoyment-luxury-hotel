@@ -50,7 +50,7 @@ const SectionNews = () => {
           <Stack mr={10}>
             <SectionNewsTitle />
           </Stack>
-          <Stack sx={{ p: { xs: '40px 0', md: '0' } }} spacing={5}>
+          <Stack sx={{ p: { xs: '40px 0', md: '0' } }} gap={5}>
             {intiNews.map((news) => (
               <div key={news._id}>{<SectionNewsCard news={news} />}</div>
             ))}
@@ -76,7 +76,7 @@ const SectionNews = () => {
         <Stack mr={10}>
           <SectionNewsTitle />
         </Stack>
-        <Stack sx={{ p: { xs: '40px 0', md: '0' } }} spacing={5}>
+        <Stack sx={{ p: { xs: '40px 0', md: '0' } }} gap={5}>
           {data.map((news) => (
             <div key={news._id}>{<SectionNewsCard news={news} />}</div>
           ))}
