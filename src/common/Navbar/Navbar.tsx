@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import {
+  Link,
   Box,
   IconButton,
   Toolbar,
@@ -88,7 +90,9 @@ const Navbar = ({ hasBackground = false, navbarListShow = true }: NavbarProps) =
           }}
         >
           <Box sx={{ flex: '0 0 auto', height: { xs: '40px', md: '72px' } }}>
-            <Logo fill={palette.neutral[0]} width={'100%'} height={'100%'} />
+            <Link component={RouterLink} to={'/'}>
+              <Logo fill={palette.neutral[0]} width={'100%'} height={'100%'} />
+            </Link>
           </Box>
           <Box sx={{ display: 'flex', flexGrow: 1 }} />
           <Box sx={{ display: navbarListShow ? 'flex' : 'none' }}>
