@@ -1,29 +1,26 @@
 import { Stack, Grid, Box, Typography, useTheme, useMediaQuery } from '@mui/material';
+import { News } from '@src/apis/home/news';
 
-type SectionNewsCardProps = {
-  img: string;
-  imgDescription: string;
-  title: string;
-  detail: string;
-};
-
-const SectionNewsCardDesktop = ({ img, imgDescription, title, detail }: SectionNewsCardProps) => {
+const SectionNewsCardDesktop = ({ title, description, image }: News) => {
   const { palette } = useTheme();
   return (
     <Stack display={'flex'} direction={'row'} spacing={3} alignItems={'center'}>
       <Box
         width="100%"
         maxWidth="474px"
-        height="100%"
+        height="294px"
         maxHeight={'294px'}
         borderRadius={2}
         overflow={'hidden'}
         flex={'1 0 474px'}
+        bgcolor={palette.hotelPrimary[10]}
+        display={'flex'}
+        alignItems={'center'}
       >
-        <img src={img} alt={imgDescription} width="100%" height="100%" />
+        <img src={image} alt={description} width="100%" height="auto" />
       </Box>
       <Grid
-        display={'flex'}
+        container
         direction={'column'}
         alignItems={'flex-start'}
         justifyContent={'flex-start'}
@@ -33,30 +30,33 @@ const SectionNewsCardDesktop = ({ img, imgDescription, title, detail }: SectionN
           {title}
         </Typography>
         <Typography variant="Body_16px_R" color={palette.neutral[80]}>
-          {detail}
+          {description}
         </Typography>
       </Grid>
     </Stack>
   );
 };
 
-const SectionNewsCardMobile = ({ img, imgDescription, title, detail }: SectionNewsCardProps) => {
+const SectionNewsCardMobile = ({ title, description, image }: News) => {
   const { palette } = useTheme();
   return (
     <Stack display={'flex'} direction={'column'} spacing={3} alignItems={'center'}>
       <Box
         width="100%"
         maxWidth="351px"
-        height="100%"
+        height="294px"
         maxHeight={'294px'}
         borderRadius={2}
         overflow={'hidden'}
         flex={'1 0 294px'}
+        bgcolor={palette.hotelPrimary[10]}
+        display={'flex'}
+        alignItems={'center'}
       >
-        <img src={img} alt={imgDescription} width="100%" height="100%" />
+        <img src={image} alt={description} width="100%" height="auto" />
       </Box>
       <Grid
-        display={'flex'}
+        container
         direction={'column'}
         alignItems={'flex-start'}
         justifyContent={'flex-start'}
@@ -66,17 +66,17 @@ const SectionNewsCardMobile = ({ img, imgDescription, title, detail }: SectionNe
           {title}
         </Typography>
         <Typography variant="Body2_14px_R" color={palette.neutral[80]}>
-          {detail}
+          {description}
         </Typography>
       </Grid>
     </Stack>
   );
 };
 
-const SectionNewsCard = (props: SectionNewsCardProps) => {
+const SectionNewsCard = ({ news }: { news: News }) => {
   const { breakpoints } = useTheme();
   const isDesktop = useMediaQuery(breakpoints.up('md'));
-  return isDesktop ? <SectionNewsCardDesktop {...props} /> : <SectionNewsCardMobile {...props} />;
+  return isDesktop ? SectionNewsCardDesktop(news) : SectionNewsCardMobile(news);
 };
 
 export default SectionNewsCard;
