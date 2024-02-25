@@ -33,7 +33,7 @@ const SectionHeroHotelNameDesktop = () => {
 const SectionHeroHotelNameMobile = () => {
   return (
     <Grid
-      display="flex"
+      container
       direction={'column'}
       alignItems={'center'}
       sx={{
