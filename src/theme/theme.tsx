@@ -51,6 +51,7 @@ declare module '@mui/material/styles' {
       40: string;
       10: string;
       0: string;
+      transparent: string;
     };
   }
 
@@ -72,6 +73,7 @@ declare module '@mui/material/styles' {
       40: string;
       10: string;
       0: string;
+      transparent: string;
     };
   }
 }
@@ -135,6 +137,7 @@ const palette: ThemeOptions['palette'] = {
     40: '#ECECEC',
     10: '#F9F9F9',
     0: '#FFFFFF',
+    transparent: 'rgba(255, 255, 255, 0)',
   },
 };
 
@@ -200,7 +203,7 @@ const components: ThemeOptions['components'] = {
       root: {
         boxShadow: 'none',
         '&.hasBackground': {
-          backgroundColor: palette.neutral[100],
+          backgroundColor: palette.neutral['bgcolor'],
         },
       },
     },
@@ -209,10 +212,7 @@ const components: ThemeOptions['components'] = {
   MuiFormHelperText: {
     styleOverrides: {
       root: {
-        '&#menu-appbar > .MuiPaper-root': {
-          padding: '12px 0px',
-          borderRadius: '20px',
-        },
+        marginLeft: 0,
       },
     },
   },
