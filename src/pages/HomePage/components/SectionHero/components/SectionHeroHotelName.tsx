@@ -16,11 +16,9 @@ const SectionHeroHotelNameDesktop = () => {
         Enjoyment Luxury Hotel
       </Typography>
       <Box
-        component="div"
         width="100%"
         height="2px"
         borderRadius="2px"
-        display="flex"
         sx={{
           background: (theme: Theme) =>
             `linear-gradient(90deg, ${theme.palette.hotelPrimary[100]}, ${theme.palette.neutral[0]})`,
@@ -49,11 +47,9 @@ const SectionHeroHotelNameMobile = () => {
         Enjoyment Luxury Hotel
       </Typography>
       <Box
-        component="div"
         width="2px"
         height="84px"
         borderRadius="2px"
-        display="flex"
         sx={{
           background: (theme: Theme) =>
             `linear-gradient(180deg, ${theme.palette.hotelPrimary[100]}, ${theme.palette.neutral[0]})`,

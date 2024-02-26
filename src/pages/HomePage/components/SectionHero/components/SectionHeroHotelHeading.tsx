@@ -5,15 +5,8 @@ const transparent30 = 'rgba(255, 255, 255, 0.3)';
 
 const SectionHeroHotelHeadingDesktop = () => {
   return (
-    <Box
-      component={'div'}
-      justifyContent={'center'}
-      alignItems={'center'}
-      width={'100%'}
-      maxWidth={'924px'}
-    >
+    <Box justifyContent={'center'} alignItems={'center'} width={'100%'} maxWidth={'924px'}>
       <Box
-        component={'div'}
         width={'100%'}
         height={'678px'}
         borderRadius={'80px'}
@@ -45,7 +38,6 @@ const SectionHeroHotelHeadingDesktop = () => {
           flexDirection={'column'}
           justifyContent={'center'}
           alignItems={'flex-start'}
-          component={'div'}
           sx={{ transform: 'translateX(-48px)' }}
         >
           <Typography
@@ -70,7 +62,6 @@ const SectionHeroHotelHeadingDesktop = () => {
             我們致力於為您提供無與倫比的奢華體驗與優質服務
           </Typography>
           <Box
-            component={'div'}
             display={'flex'}
             justifyContent={'flex-end'}
             alignItems={'center'}
@@ -101,7 +92,6 @@ const SectionHeroHotelHeadingDesktop = () => {
               立即訂房
             </Typography>
             <Box
-              component={'div'}
               display={'flex'}
               width={'150px'}
               height={'1px'}
@@ -119,7 +109,6 @@ const SectionHeroHotelHeadingDesktop = () => {
 const SectionHeroHotelHeadingMobile = () => {
   return (
     <Box
-      component={'div'}
       display={'flex'}
       justifyContent={'flex-end'}
       alignItems={'center'}
@@ -128,7 +117,6 @@ const SectionHeroHotelHeadingMobile = () => {
       padding={'0 20px'}
     >
       <Box
-        component={'div'}
         width={'290px'}
         borderRadius={'40px'}
         display={'flex'}
@@ -160,7 +148,6 @@ const SectionHeroHotelHeadingMobile = () => {
           flexDirection={'column'}
           justifyContent={'center'}
           alignItems={'flex-start'}
-          component={'div'}
           minWidth={'310px'}
           sx={{ transform: 'translateX(-40px)' }}
         >
@@ -186,7 +173,6 @@ const SectionHeroHotelHeadingMobile = () => {
             我們致力於為您提供無與倫比的奢華體驗與優質服務
           </Typography>
           <Box
-            component={'div'}
             display={'flex'}
             justifyContent={'flex-end'}
             alignItems={'center'}
@@ -220,7 +206,6 @@ const SectionHeroHotelHeadingMobile = () => {
               立即訂房
             </Typography>
             <Box
-              component={'div'}
               display={'flex'}
               width={'80px'}
               height={'1px'}
