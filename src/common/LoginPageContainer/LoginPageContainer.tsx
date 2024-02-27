@@ -41,7 +41,12 @@ const LoginPageContainer = ({ children }: Props) => {
       component="main"
       justifyContent={'center'}
       direction={'column'}
-      sx={{ minHeight: '100vh', height: '100%', bgcolor: palette.neutral.bgcolor }}
+      sx={{
+        minHeight: '100vh',
+        height: '100%',
+        bgcolor: palette.neutral.bgcolor,
+        position: 'relative',
+      }}
     >
       <Navbar hasBackground navbarListShow={false} />
       <Grid container maxWidth={'1920px'} flex={'1 0 auto'}>
