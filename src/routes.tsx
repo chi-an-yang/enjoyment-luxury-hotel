@@ -12,14 +12,14 @@ export default function Router() {
   return (
     <Routes>
       {/* example 開頭的等用不掉的時候可直接刪掉 */}
-      <Route path="/example" index element={<ExamplePage />} />
-      <Route path="/exampleSwiperPage" index element={<ExampleSwiperPage />} />
+      <Route path="/example" element={<ExamplePage />} />
+      <Route path="/exampleSwiperPage" element={<ExampleSwiperPage />} />
       <Route path="/" index element={<HomePage />} />
-      <Route path="/login" index element={<LoginPage />} />
-      <Route path="/member/user-info" index element={<MemberUserInfoPage />} />
-      <Route path="/member/orders" index element={<MemberUserOrdersPage />} />
-      <Route path="/register" index element={<RegisterPage />} />
-      <Route path="/password" index element={<p>忘記密碼，設計稿沒有，之後再處理</p>} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/member/user-info" element={<MemberUserInfoPage />} />
+      <Route path="/member/orders" element={<MemberUserOrdersPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/password" element={<p>忘記密碼，設計稿沒有，之後再處理</p>} />
     </Routes>
   );
 }
