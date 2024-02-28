@@ -4,6 +4,7 @@ import { fetchNewsList } from '@src/apis/home/news';
 import HomePageContainer from '@src/common/HomePageContainer';
 import SectionNewsTitle from './components/SectionNewsTitle';
 import SectionNewsCard from './components/SectionNewsCard';
+import SectionNewsCardSkeleton from './components/SectionNewsCardSkeleton';
 import DecoTop from './components/DecoTop';
 import DecoBottom from './components/DecoBottom';
 import { News } from '@src/apis/home/news';
@@ -52,7 +53,9 @@ const SectionNews = () => {
           </Stack>
           <Stack sx={{ p: { xs: '40px 0', md: '0' } }} gap={5}>
             {intiNews.map((news) => (
-              <div key={news._id}>{<SectionNewsCard news={news} />}</div>
+              <div key={news._id}>
+                <SectionNewsCardSkeleton />
+              </div>
             ))}
           </Stack>
         </HomePageContainer>
