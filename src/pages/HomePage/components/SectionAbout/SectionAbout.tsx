@@ -1,6 +1,7 @@
 import HomePageContainer from '@src/common/HomePageContainer';
 import dBgUrl from '@src/assets/images/desktop/about.png';
 import mBgUrl from '@src/assets/images/mobile/about.png';
+import mLineBgUrl from '@src/assets/images/Line-m.png';
 import { Box, Stack, Typography, styled, useMediaQuery, useTheme } from '@mui/material';
 
 const DesktopWrap = styled('div')(({ theme }) => ({
@@ -81,11 +82,22 @@ const SectionAbout = () => {
     <Box
       component={'section'}
       sx={{
-        minHeight: {md: '992px', xs: '794px'},
+        minHeight: { md: '992px', xs: '794px' },
         backgroundImage: { md: `url(${dBgUrl})`, xs: `url(${mBgUrl})` },
-        backgroundSize: 'auto 672px',
+        backgroundSize: { md: 'auto 672px', xs: 'contain' },
         backgroundRepeat: 'no-repeat',
         backgroundPosition: { md: 'center 120px', xs: 'center 80px' },
+        '::after': {
+          xs: {
+            content: '""',
+            backgroundSize: 'contain',
+            backgroundImage: `url(${mLineBgUrl})`,
+            position: 'absolute',
+            width: '375px',
+            height: '87px',
+            transform: 'translate(80px, -24px)',
+          },
+        },
       }}
     >
       <HomePageContainer

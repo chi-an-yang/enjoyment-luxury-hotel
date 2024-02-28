@@ -8,16 +8,17 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Navbar from '@src/common/Navbar';
 import SectionHero from './components/SectionHero';
+import SectionAbout from './components/SectionAbout';
 import Footer from '@src/common/Footer';
 import { useTheme } from '@mui/material';
-import SectionAbout from './components/SectionAbout';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function HomePage() {
+  const { palette } = useTheme();
   return (
     <>
-      <main>
+      <main style={{ backgroundColor: palette.neutral.bgcolor }}>
         <Navbar />
         <SectionHero />
         <SectionAbout />
