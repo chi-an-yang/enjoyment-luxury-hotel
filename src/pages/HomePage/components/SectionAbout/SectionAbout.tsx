@@ -2,6 +2,7 @@ import HomePageContainer from '@src/common/HomePageContainer';
 import dBgUrl from '@src/assets/images/desktop/about.png';
 import mBgUrl from '@src/assets/images/mobile/about.png';
 import mLineBgUrl from '@src/assets/images/Line-m.png';
+import LineBgUrl from '@src/assets/images/Line.png';
 import { Box, Stack, Typography, styled, useMediaQuery, useTheme } from '@mui/material';
 
 const DesktopWrap = styled('div')(({ theme }) => ({
@@ -88,15 +89,14 @@ const SectionAbout = () => {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: { md: 'center 120px', xs: 'center 80px' },
         '::after': {
-          xs: {
-            content: '""',
-            backgroundSize: 'contain',
-            backgroundImage: `url(${mLineBgUrl})`,
-            position: 'absolute',
-            width: '375px',
-            height: '87px',
-            transform: 'translate(80px, -24px)',
-          },
+          content: '""',
+          backgroundSize: 'contain',
+          backgroundImage: { md: `url(${LineBgUrl})`, xs: `url(${mLineBgUrl})` },
+          position: 'absolute',
+          width: { md: '1060px', xs: '375px' },
+          height: { md: '187px', xs: '87px' },
+          transform: { md: 'translate(0, 180px)', xs: 'translate(80px, -24px)' },
+          right: 0,
         },
       }}
     >
