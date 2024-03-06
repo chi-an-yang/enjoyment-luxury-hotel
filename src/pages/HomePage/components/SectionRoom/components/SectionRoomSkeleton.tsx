@@ -1,49 +1,11 @@
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Stack, Box } from '@mui/material';
-import { fetchRoomsList, Rooms } from '@src/apis/home/rooms';
+import { Stack, Box, Skeleton } from '@mui/material';
 import HomePageContainer from '@src/common/HomePageContainer';
-import UiSwiper from '@src/ui-components/UiSwiper';
 import RoomsBg from '@src/assets/images/rooms-bg.png';
 import ButtonPrev from '@src/assets/images/Button-prev.svg';
 import ButtonNext from '@src/assets/images/Button-next.svg';
-import SectionRoomInfo from './components/SectionRoomInfo';
-import SectionRoomSkeleton from './components/SectionRoomSkeleton';
-import { v4 as uuidv4 } from 'uuid';
+import SectionRoomInfoSkeleton from './SectionRoomInfoSkeleton';
 
-const initIndex = 0;
-const SectionRoom = () => {
-  const [index, setIndex] = useState<number>(initIndex);
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ['rooms'],
-    queryFn: fetchRoomsList,
-  });
-  if (isLoading) return <SectionRoomSkeleton />;
-  if (isError) return <div>Error loading data</div>;
-  if (!data) return null;
-
-  const getListObj = (url: string) => {
-    return {
-      src: url,
-      name: uuidv4(),
-    };
-  };
-
-  const roomList = (data: Rooms) => {
-    const { imageUrl, imageUrlList } = data;
-    return [imageUrl, ...imageUrlList].map((url) => getListObj(url));
-  };
-
-  const maxLength: number = data ? data.length - 1 : 0;
-  const handlePrev = () => {
-    const newIndex = (index - 1 + (maxLength + 1)) % (maxLength + 1);
-    setIndex(newIndex);
-  };
-  const handleNext = () => {
-    const newIndex = (index + 1) % (maxLength + 1);
-    setIndex(newIndex);
-  };
-
+const SectionRoomSkeleton = () => {
   return (
     <Stack
       height={'100vh'}
@@ -82,16 +44,7 @@ const SectionRoom = () => {
             maxWidth: { md: 900, xs: 351 },
           }}
         >
-          <UiSwiper
-            items={roomList(data[index])}
-            customStyle={{
-              '.swiper': {
-                width: '100%',
-                height: '100%',
-                borderRadius: '8px',
-              },
-            }}
-          />
+          <Skeleton sx={{ bgcolor: 'grey.900' }} variant="rounded" width={'100%'} height={'100%'} />
         </Box>
         <Stack
           justifyContent={'flex-end'}
@@ -106,14 +59,15 @@ const SectionRoom = () => {
             mt: { xs: 3 },
           }}
         >
-          <SectionRoomInfo {...data[index]} />
+          <SectionRoomInfoSkeleton />
           <Box alignSelf={'flex-end'}>
-            <img src={ButtonPrev} alt="prev" onClick={handlePrev} />
-            <img src={ButtonNext} alt="next" onClick={handleNext} />
+            <img src={ButtonPrev} alt="prev" />
+            <img src={ButtonNext} alt="next" />
           </Box>
         </Stack>
       </HomePageContainer>
     </Stack>
   );
 };
-export default SectionRoom;
+
+export default SectionRoomSkeleton;
