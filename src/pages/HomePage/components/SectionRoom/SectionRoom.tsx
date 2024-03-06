@@ -7,6 +7,7 @@ import UiSwiper from '@src/ui-components/UiSwiper';
 import RoomsBg from '@src/assets/images/rooms-bg.png';
 import ButtonPrev from '@src/assets/images/Button-prev.svg';
 import ButtonNext from '@src/assets/images/Button-next.svg';
+import Dot from '@src/assets/images/dot.png';
 import SectionRoomInfo from './components/SectionRoomInfo';
 import SectionRoomSkeleton from './components/SectionRoomSkeleton';
 import { v4 as uuidv4 } from 'uuid';
@@ -113,6 +114,18 @@ const SectionRoom = () => {
           </Box>
         </Stack>
       </HomePageContainer>
+      <Box
+        width={200}
+        height={200}
+        sx={{
+          position: 'absolute',
+          right: '80px',
+          bottom: '-160px',
+          display: { md: 'block', xs: 'none' },
+        }}
+      >
+        <img src={Dot} alt="dot" width={'100%'} height={'100%'} />
+      </Box>
     </Stack>
   );
 };
