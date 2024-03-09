@@ -23,6 +23,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.15.5
     version: 5.15.5(react@18.2.0)
+  '@types/uuid':
+    specifier: ^9.0.8
+    version: 9.0.8
   axios:
     specifier: ^1.6.3
     version: 1.6.3
@@ -73,9 +76,6 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.17
     version: 18.2.18
-  '@types/uuid':
-    specifier: ^9.0.8
-    version: 9.0.8
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.14.0
     version: 6.16.0(@typescript-eslint/parser@6.16.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -1508,7 +1508,6 @@ packages:
 
   /@types/uuid@9.0.8:
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
-    dev: true
 
   /@typescript-eslint/eslint-plugin@6.16.0(@typescript-eslint/parser@6.16.0)(eslint@8.56.0)(typescript@5.3.3):
     resolution: {integrity: sha512-O5f7Kv5o4dLWQtPX4ywPPa+v9G+1q1x8mz0Kr0pXUtKsevo+gIJHLkGc8RxaZWtP8RrhwhSNIWThnW42K9/0rQ==}
