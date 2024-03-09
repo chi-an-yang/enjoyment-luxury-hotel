@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Stack, Box } from '@mui/material';
-import { fetchRoomsList, Rooms } from '@src/apis/home/rooms';
+import { fetchRoomsList, Rooms } from '@src/apis/home';
 import HomePageContainer from '@src/common/HomePageContainer';
 import UiSwiper from '@src/ui-components/UiSwiper';
 import RoomsBg from '@src/assets/images/rooms-bg.png';
