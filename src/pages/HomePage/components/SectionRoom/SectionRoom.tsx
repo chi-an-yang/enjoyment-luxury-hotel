@@ -13,6 +13,13 @@ import SectionRoomSkeleton from './components/SectionRoomSkeleton';
 import { v4 as uuidv4 } from 'uuid';
 
 const initIndex = 0;
+const getListObj = (url: string) => {
+  return {
+    src: url,
+    name: uuidv4(),
+  };
+};
+
 const SectionRoom = () => {
   const [index, setIndex] = useState<number>(initIndex);
   const { data, isError, isLoading } = useQuery({
@@ -22,13 +29,6 @@ const SectionRoom = () => {
   if (isLoading) return <SectionRoomSkeleton />;
   if (isError) return <div>Error loading data</div>;
   if (!data) return null;
-
-  const getListObj = (url: string) => {
-    return {
-      src: url,
-      name: uuidv4(),
-    };
-  };
 
   const roomList = (data: Rooms) => {
     const { imageUrl, imageUrlList } = data;
