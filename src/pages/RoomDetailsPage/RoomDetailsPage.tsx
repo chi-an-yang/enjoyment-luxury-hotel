@@ -5,17 +5,14 @@ import Navbar from '@src/common/Navbar';
 import { fetchRoomsById } from '@src/apis/home';
 import { useQuery } from '@tanstack/react-query';
 import RoomDetailsPageHero from './components/RoomDetailsPageHero';
-type Params = {
-  id: string;
-};
 
 const RoomDetailsPage = () => {
   const { palette } = useTheme();
-  const { id } = useParams() as Params; // 除了強制轉型，還有別的解法嗎
+  const { id } = useParams();
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ['roomDetails', id],
-    queryFn: async () => await fetchRoomsById(id),
+    queryFn: async () => await fetchRoomsById(id as string), // id!
     enabled: !!id,
   });
 
