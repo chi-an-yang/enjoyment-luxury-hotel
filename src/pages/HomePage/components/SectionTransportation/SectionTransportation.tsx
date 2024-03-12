@@ -53,7 +53,11 @@ const IntroRow = ({ icon, title, description }: IntroRowProps) => {
       >
         {title}
       </Typography>
-      <Typography variant={isDesktop ? 'Body_16px_R' : 'Body2_14px_R'} color={palette.neutral[0]}>
+      <Typography
+        mt={2}
+        variant={isDesktop ? 'Body_16px_R' : 'Body2_14px_R'}
+        color={palette.neutral[0]}
+      >
         {description}
       </Typography>
     </Stack>
@@ -65,14 +69,17 @@ const SectionTransportation = () => {
   const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
     <>
-      <HomePageContainer disableGutters={false} sx={{ minHeight: 'auto', pt: 15, pb: 10 }}>
+      <HomePageContainer
+        disableGutters={false}
+        sx={{ minHeight: 'auto', pt: { md: 15, xs: 10 }, pb: { md: 10, xs: 5 } }}
+      >
         <Heading />
         <Stack mt={10}>
           <Stack height={'400px'}>
             <Typography mb={2} variant="Title_16px_B" sx={{ color: palette.neutral[40] }}>
               台灣高雄市新興區六角路123號
             </Typography>
-            <Box overflow={'hidden'} borderRadius={1}>
+            <Box overflow={'hidden'} borderRadius={2}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.5399925363986!2d120.29511327523444!3d22.633646879448285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e048a08fa14c5%3A0xeb34a3011d9c3188!2zODAx6auY6ZuE5biC5YmN6YeR5Y2A5LiD6LOi5LqM6LevMTIz6Jmf!5e0!3m2!1szh-TW!2stw!4v1709860303166!5m2!1szh-TW!2stw"
                 width={'100%'}
