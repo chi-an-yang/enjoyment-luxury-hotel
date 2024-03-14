@@ -3,6 +3,7 @@ import SectionNews from './components/SectionNews';
 import SectionHero from './components/SectionHero';
 import SectionAbout from './components/SectionAbout';
 import SectionRoom from './components/SectionRoom';
+import SectionTransportation from './components/SectionTransportation';
 import Footer from '@src/common/Footer';
 import { useTheme } from '@mui/material';
 
@@ -16,6 +17,7 @@ export default function HomePage() {
         <SectionNews />
         <SectionAbout />
         <SectionRoom />
+        <SectionTransportation />
       </main>
       <Footer />
     </>
