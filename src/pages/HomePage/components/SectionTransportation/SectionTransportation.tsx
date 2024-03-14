@@ -47,14 +47,14 @@ const IntroRow = ({ icon, title, description }: IntroRowProps) => {
         {icon}
       </SvgIcon>
       <Typography
-        mt={2}
+        mt={{ md: 2, xs: 1 }}
         variant={isDesktop ? 'H5_24px_B' : 'Title_16px_B'}
         color={palette.neutral[0]}
       >
         {title}
       </Typography>
       <Typography
-        mt={2}
+        mt={{ md: 2, xs: 1 }}
         variant={isDesktop ? 'Body_16px_R' : 'Body2_14px_R'}
         color={palette.neutral[0]}
       >
