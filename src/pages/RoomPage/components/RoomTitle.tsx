@@ -1,6 +1,7 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 const RoomTitle = ({ title }: { title: string }) => {
-  const { palette } = useTheme();
+  const { palette, breakpoints } = useTheme();
+  const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
     <Box
       sx={{
@@ -22,7 +23,7 @@ const RoomTitle = ({ title }: { title: string }) => {
         },
       }}
     >
-      <Typography variant="H5_24px_B">{title}</Typography>
+      <Typography variant={isDesktop ? 'H5_24px_B' : 'Title_16px_B'}>{title}</Typography>
     </Box>
   );
 };

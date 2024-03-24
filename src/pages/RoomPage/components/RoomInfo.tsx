@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import { Info } from '@src/apis/home';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, useTheme, useMediaQuery } from '@mui/material';
 import RoomTitle from './RoomTitle';
+import RoomInfoTitle from './RoomInfoTitle';
 import RoomInfoBasicImage from './RoomInfoBasicImage';
 
 type titleProps = 'layoutInfo' | 'facilityInfo' | 'amenityInfo';
@@ -51,8 +52,10 @@ const InfoWrapper = ({ children }: { children: ReactNode }) => {
 };
 
 const RoomInfo = ({ title, infos }: infoProps) => {
+  const { breakpoints } = useTheme();
+  const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
-    <Box display={'flex'} gap={3} flexDirection={'column'}>
+    <Box display={'flex'} gap={isDesktop ? 3 : 2} flexDirection={'column'}>
       <RoomTitle title={getInfoTitle(title)} />
       <InfoWrapper>
         {infos
@@ -61,7 +64,7 @@ const RoomInfo = ({ title, infos }: infoProps) => {
             <Box gap={1} display={'flex'} justifyContent={'center'} alignItems={'center'} mr={4}>
               <RoomInfoBasicImage type={'isProvide'} />
               <Box width={'64px'}>
-                <Typography variant="Title_16px_B">{info.title}</Typography>
+                <RoomInfoTitle>{info.title}</RoomInfoTitle>
               </Box>
             </Box>
           ))}
