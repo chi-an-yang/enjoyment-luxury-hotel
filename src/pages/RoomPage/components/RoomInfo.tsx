@@ -60,7 +60,14 @@ const RoomInfo = ({ title, infos }: infoProps) => {
         {infos
           .filter((info) => info.isProvide)
           .map((info) => (
-            <Box gap={1} display={'flex'} justifyContent={'center'} alignItems={'center'} mr={4}>
+            <Box
+              key={info.title}
+              gap={1}
+              display={'flex'}
+              justifyContent={'center'}
+              alignItems={'center'}
+              mr={4}
+            >
               <RoomInfoBasicImage type={'isProvide'} />
               <Box width={'64px'}>
                 <RoomInfoTitle>{info.title}</RoomInfoTitle>
