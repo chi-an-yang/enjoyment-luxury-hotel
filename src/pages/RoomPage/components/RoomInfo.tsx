@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Info } from '@src/apis/home';
+import { RoomInfo } from '@src/apis/home';
 import { Box, useTheme, useMediaQuery } from '@mui/material';
 import RoomTitle from './RoomTitle';
 import RoomInfoTitle from './RoomInfoTitle';
@@ -8,7 +8,7 @@ import RoomInfoBasicImage from './RoomInfoBasicImage';
 type titleProps = 'layoutInfo' | 'facilityInfo' | 'amenityInfo';
 type infoProps = {
   title: titleProps;
-  infos: Info[];
+  infos: RoomInfo[];
 };
 
 const getInfoTitle = (title: titleProps) => {

@@ -43,7 +43,7 @@ import axios from '../axios';
 //     }...
 // }
 
-export type Info = {
+export type RoomInfo = {
   title: string;
   isProvide: boolean;
 };
@@ -59,11 +59,11 @@ export type Rooms = {
   maxPeople: number;
   price: number;
   status: number;
-  facilityInfo: Info[];
-  amenityInfo: Info[];
+  facilityInfo: RoomInfo[];
+  amenityInfo: RoomInfo[];
   createdAt: string;
   updatedAt: string;
-  layoutInfo: Info[];
+  layoutInfo: RoomInfo[];
 };
 
 export type fetchRoomsListResponse = Rooms[];
