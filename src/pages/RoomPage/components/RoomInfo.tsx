@@ -11,15 +11,14 @@ type infoProps = {
   infos: RoomInfo[];
 };
 
+const titleMap = {
+  layoutInfo: '房間格局',
+  facilityInfo: '房內設備',
+  amenityInfo: '備品提供',
+};
+
 const getInfoTitle = (title: titleProps) => {
-  switch (title) {
-    case 'layoutInfo':
-      return '房間格局';
-    case 'facilityInfo':
-      return '房內設備';
-    case 'amenityInfo':
-      return '備品提供';
-  }
+  return titleMap[title];
 };
 
 const InfoWrapper = ({ children }: { children: ReactNode }) => {
