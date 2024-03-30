@@ -165,6 +165,21 @@ const components: ThemeOptions['components'] = {
           color: palette.neutral[60],
         },
       },
+      outlined: {
+        border: `1px solid ${palette.hotelPrimary[100]}`,
+        color: palette.hotelPrimary[100],
+        backgroundColor: palette.neutral[0],
+        '&:hover': {
+          border: `1px solid ${palette.hotelPrimary[120]}`,
+          color: palette.hotelPrimary[120],
+          backgroundColor: palette.hotelPrimary[10],
+        },
+        '&:disabled': {
+          border: `1px solid ${palette.neutral[60]}`,
+          color: palette.neutral[60],
+          backgroundColor: palette.neutral[0],
+        },
+      },
     },
   },
 
