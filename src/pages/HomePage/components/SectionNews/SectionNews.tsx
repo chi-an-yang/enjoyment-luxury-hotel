@@ -1,7 +1,7 @@
 import { Grid, Stack, useTheme } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { fetchNewsList } from '@src/apis/home/news';
-import HomePageContainer from '@src/common/HomePageContainer';
+import PageContainer from '@src/common/PageContainer';
 import SectionNewsTitle from './components/SectionNewsTitle';
 import SectionNewsCard from './components/SectionNewsCard';
 import SectionNewsCardSkeleton from './components/SectionNewsCardSkeleton';
@@ -41,7 +41,7 @@ const SectionNews = () => {
     return (
       <Grid bgcolor={palette.hotelPrimary[10]} position={'relative'}>
         <DecoTop />
-        <HomePageContainer
+        <PageContainer
           sx={{
             display: 'flex',
             p: { xs: '80px 12px', md: '120px 0' },
@@ -58,7 +58,7 @@ const SectionNews = () => {
               </div>
             ))}
           </Stack>
-        </HomePageContainer>
+        </PageContainer>
         <DecoBottom />
       </Grid>
     );
@@ -69,7 +69,7 @@ const SectionNews = () => {
   return (
     <Grid bgcolor={palette.hotelPrimary[10]} position={'relative'}>
       <DecoTop />
-      <HomePageContainer
+      <PageContainer
         sx={{
           display: 'flex',
           p: { xs: '80px 12px', md: '120px 0' },
@@ -84,7 +84,7 @@ const SectionNews = () => {
             <div key={news._id}>{<SectionNewsCard news={news} />}</div>
           ))}
         </Stack>
-      </HomePageContainer>
+      </PageContainer>
       <DecoBottom />
     </Grid>
   );

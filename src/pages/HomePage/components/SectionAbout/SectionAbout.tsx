@@ -1,4 +1,4 @@
-import HomePageContainer from '@src/common/HomePageContainer';
+import PageContainer from '@src/common/PageContainer';
 import dBgUrl from '@src/assets/images/desktop/about.png';
 import mBgUrl from '@src/assets/images/mobile/about.png';
 import mLineBgUrl from '@src/assets/images/Line-m.png';
@@ -104,7 +104,7 @@ const SectionAbout = () => {
         },
       }}
     >
-      <HomePageContainer
+      <PageContainer
         sx={{
           position: 'relative',
           display: 'flex',
@@ -116,7 +116,7 @@ const SectionAbout = () => {
           <Heading />
           <Intro />
         </AboutWrap>
-      </HomePageContainer>
+      </PageContainer>
     </Box>
   );
 };

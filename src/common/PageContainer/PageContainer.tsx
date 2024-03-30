@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Container, SxProps, ContainerProps } from '@mui/material';
 
-const HomePageContainer = ({
+const PageContainer = ({
   children,
   sx,
   ...props
@@ -13,4 +13,4 @@ const HomePageContainer = ({
   );
 };
 
-export default HomePageContainer;
+export default PageContainer;

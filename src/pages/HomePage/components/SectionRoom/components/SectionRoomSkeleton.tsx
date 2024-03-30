@@ -1,5 +1,5 @@
 import { Stack, Box, Skeleton } from '@mui/material';
-import HomePageContainer from '@src/common/HomePageContainer';
+import PageContainer from '@src/common/PageContainer';
 import RoomsBg from '@src/assets/images/rooms-bg.png';
 import ButtonPrev from '@src/assets/images/Button-prev.svg';
 import ButtonNext from '@src/assets/images/Button-next.svg';
@@ -26,7 +26,7 @@ const SectionRoomSkeleton = () => {
         },
       }}
     >
-      <HomePageContainer
+      <PageContainer
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -65,7 +65,7 @@ const SectionRoomSkeleton = () => {
             <img src={ButtonNext} alt="next" />
           </Box>
         </Stack>
-      </HomePageContainer>
+      </PageContainer>
     </Stack>
   );
 };

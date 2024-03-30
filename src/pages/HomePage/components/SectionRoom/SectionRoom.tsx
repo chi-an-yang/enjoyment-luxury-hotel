@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Stack, Box } from '@mui/material';
 import { fetchRoomsList, Rooms } from '@src/apis/home';
-import HomePageContainer from '@src/common/HomePageContainer';
+import PageContainer from '@src/common/PageContainer';
 import UiSwiper from '@src/ui-components/UiSwiper';
 import RoomsBg from '@src/assets/images/rooms-bg.png';
 import ButtonPrev from '@src/assets/images/Button-prev.svg';
@@ -65,7 +65,7 @@ const SectionRoom = () => {
         },
       }}
     >
-      <HomePageContainer
+      <PageContainer
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -113,7 +113,7 @@ const SectionRoom = () => {
             <img src={ButtonNext} alt="next" onClick={handleNext} />
           </Box>
         </Stack>
-      </HomePageContainer>
+      </PageContainer>
       <Box
         width={200}
         height={200}

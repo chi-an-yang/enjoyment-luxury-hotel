@@ -1,5 +1,5 @@
 import { useMediaQuery, Stack, Box, Typography, useTheme, SvgIcon } from '@mui/material';
-import HomePageContainer from '@src/common/HomePageContainer';
+import PageContainer from '@src/common/PageContainer';
 import { FaCar, FaTrain, FaCarOn } from 'react-icons/fa6';
 import dLingBg from '@src/assets/images/Line.png';
 import mLineBg from '@src/assets/images/Line-m.png';
@@ -69,7 +69,7 @@ const SectionTransportation = () => {
   const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
     <>
-      <HomePageContainer
+      <PageContainer
         disableGutters={false}
         sx={{ minHeight: 'auto', pt: { md: 15, xs: 10 }, pb: { md: 10, xs: 5 } }}
       >
@@ -108,7 +108,7 @@ const SectionTransportation = () => {
             />
           </Stack>
         </Stack>
-      </HomePageContainer>
+      </PageContainer>
       <Box
         component={'img'}
         src={isDesktop ? dLingBg : mLineBg}
