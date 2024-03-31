@@ -3,7 +3,7 @@ import { RoomInfo } from '@src/apis/home';
 import { Box, useTheme, useMediaQuery } from '@mui/material';
 import RoomTitle from './RoomTitle';
 import RoomInfoTitle from './RoomInfoTitle';
-import RoomInfoBasicImage from './RoomInfoBasicImage';
+import isProvideImg from '@src/assets/images/isProvide.png';
 
 type titleProps = 'layoutInfo' | 'facilityInfo' | 'amenityInfo';
 type infoProps = {
@@ -68,7 +68,7 @@ const RoomInfo = ({ title, infos }: infoProps) => {
               alignItems={'center'}
               mr={4}
             >
-              <RoomInfoBasicImage type={'isProvide'} />
+              <img src={isProvideImg} alt={'isProvide'} />
               <Box width={'64px'}>
                 <RoomInfoTitle>{info.title}</RoomInfoTitle>
               </Box>

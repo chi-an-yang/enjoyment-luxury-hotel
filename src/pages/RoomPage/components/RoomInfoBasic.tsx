@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 import { Stack, Box, Typography, useTheme } from '@mui/material';
 import RoomTitle from './RoomTitle';
-import RoomInfoBasicImage from './RoomInfoBasicImage';
+import areaInfoImg from '@src/assets/images/areaInfo.png';
+import bedInfoImg from '@src/assets/images/bedInfo.png';
+import maxPeopleImg from '@src/assets/images/maxPeople.png';
 
 type basicProps = {
   areaInfo: string;
@@ -43,15 +45,15 @@ const RoomInfoBasic = ({ areaInfo, bedInfo, maxPeople }: basicProps) => {
       <RoomTitle title={'房型基本資訊'} />
       <Stack direction="row" spacing={1}>
         <BasicInfoWrapper>
-          <RoomInfoBasicImage type={'areaInfo'} />
+          <img src={areaInfoImg} alt={'areaInfo'} />
           <Typography variant="Title_16px_B">{areaInfo}</Typography>
         </BasicInfoWrapper>
         <BasicInfoWrapper>
-          <RoomInfoBasicImage type={'bedInfo'} />
+          <img src={bedInfoImg} alt={'bedInfo'} />
           <Typography variant="Title_16px_B">{bedInfo}</Typography>
         </BasicInfoWrapper>
         <BasicInfoWrapper>
-          <RoomInfoBasicImage type={'maxPeople'} />
+          <img src={maxPeopleImg} alt={'maxPeople'} />
           <Typography variant="Title_16px_B">{maxPeople}</Typography>
         </BasicInfoWrapper>
       </Stack>
