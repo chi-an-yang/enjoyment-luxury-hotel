@@ -4,7 +4,9 @@ import { useTheme } from '@mui/material';
 import Navbar from '@src/common/Navbar';
 import { fetchRoomsById } from '@src/apis/home';
 import { useQuery } from '@tanstack/react-query';
+import PageContainer from '@src/common/PageContainer';
 import RoomDetailsPageHero from './components/RoomDetailsPageHero';
+import RoomDetailsPageCard from './components/RoomDetailsPageCard';
 
 const RoomDetailsPage = () => {
   const { palette } = useTheme();
@@ -28,6 +30,9 @@ const RoomDetailsPage = () => {
       <Stack sx={{ marginTop: { md: '120px', xs: '72px' } }}>
         <main style={{ backgroundColor: palette.hotelPrimary[10] }}>
           <RoomDetailsPageHero imageUrl={imageUrl} imageUrlList={imageUrlList} />
+          <PageContainer>
+            <RoomDetailsPageCard />
+          </PageContainer>
         </main>
       </Stack>
     </>
