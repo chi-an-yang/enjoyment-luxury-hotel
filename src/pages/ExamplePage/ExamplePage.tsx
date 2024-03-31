@@ -50,107 +50,35 @@ const ExamplePage = () => {
 
           <Divider textAlign="center">RoomInfo</Divider>
           <RoomInfoBasic areaInfo={'24坪'} bedInfo={'一張大床'} maxPeople={4} />
-          <RoomInfo
-            title={'layoutInfo'}
-            infos={[
-              {
-                title: '市景',
-                isProvide: true,
-              },
-              { title: '獨立衛浴', isProvide: true },
-              { title: '客廳', isProvide: true },
-              { title: '書房', isProvide: true },
-              { title: '樓層電梯', isProvide: false },
-            ]}
-          />
+          <RoomInfo title={'layoutInfo'} infos={['市景', '獨立衛浴', '客廳', '書房', '樓層電梯']} />
           <RoomInfo
             title={'facilityInfo'}
             infos={[
-              {
-                title: '平面電視',
-                isProvide: true,
-              },
-              {
-                title: '吹風機',
-                isProvide: true,
-              },
-              {
-                title: '冰箱',
-                isProvide: true,
-              },
-              {
-                title: '熱水壺',
-                isProvide: true,
-              },
-              {
-                title: '檯燈',
-                isProvide: true,
-              },
-              {
-                title: '衣櫃',
-                isProvide: true,
-              },
-              {
-                title: '除濕機',
-                isProvide: true,
-              },
-              {
-                title: '浴缸',
-                isProvide: true,
-              },
-              {
-                title: '書桌',
-                isProvide: true,
-              },
-              {
-                title: '音響',
-                isProvide: true,
-              },
+              '平面電視',
+              '吹風機',
+              '冰箱',
+              '熱水壺',
+              '檯燈',
+              '衣櫃',
+              '除濕機',
+              '浴缸',
+              '書桌',
+              '音響',
             ]}
           />
           <RoomInfo
             title={'amenityInfo'}
             infos={[
-              {
-                title: '衛生紙',
-                isProvide: true,
-              },
-              {
-                title: '拖鞋',
-                isProvide: true,
-              },
-              {
-                title: '沐浴用品',
-                isProvide: true,
-              },
-              {
-                title: '清潔用品',
-                isProvide: true,
-              },
-              {
-                title: '刮鬍刀',
-                isProvide: true,
-              },
-              {
-                title: '吊衣架',
-                isProvide: true,
-              },
-              {
-                title: '浴巾',
-                isProvide: true,
-              },
-              {
-                title: '刷牙用品',
-                isProvide: true,
-              },
-              {
-                title: '罐裝水',
-                isProvide: true,
-              },
-              {
-                title: '梳子',
-                isProvide: true,
-              },
+              '衛生紙',
+              '拖鞋',
+              '沐浴用品',
+              '清潔用品',
+              '刮鬍刀',
+              '吊衣架',
+              '浴巾',
+              '刷牙用品',
+              '罐裝水',
+              '梳子',
             ]}
           />
         </Stack>
