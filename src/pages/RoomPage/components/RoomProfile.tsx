@@ -43,7 +43,7 @@ const RoomProfile = ({ areaInfo, bedInfo, maxPeople }: profileProps) => {
   return (
     <>
       <RoomTitle title={'房型基本資訊'} />
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={2}>
         <ProfileWrapper>
           <img src={areaInfoImg} alt={'areaInfo'} />
           <Typography variant="Title_16px_B">{areaInfo}</Typography>
