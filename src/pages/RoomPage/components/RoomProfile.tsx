@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
-import { Stack, Box, Typography, useTheme } from '@mui/material';
+import { Stack, Box, Typography, styled } from '@mui/material';
 import RoomTitle from './RoomTitle';
 import areaInfoImg from '@src/assets/images/areaInfo.png';
 import bedInfoImg from '@src/assets/images/bedInfo.png';
@@ -11,33 +10,18 @@ type profileProps = {
   maxPeople: number;
 };
 
-const ProfileWrapper = ({ children }: { children: ReactNode }) => {
-  const { palette } = useTheme();
-  return (
-    <Box
-      width={'96px'}
-      height={'96px'}
-      bgcolor={palette.neutral[0]}
-      borderRadius={1}
-      display={'flex'}
-      justifyContent={'center'}
-      alignItems={'center'}
-      p={2}
-    >
-      <Box
-        width={'64px'}
-        height={'64px'}
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems={'flex-start'}
-        flexDirection="column"
-        gap={1}
-      >
-        {children}
-      </Box>
-    </Box>
-  );
-};
+const ProfileWrapper = styled(Box)(({ theme }) => ({
+  width: '96px',
+  height: '96px',
+  backgroundColor: theme.palette.neutral[0],
+  borderRadius: '1px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  gap: theme.spacing(1),
+  padding: theme.spacing(2),
+}));
 
 const RoomProfile = ({ areaInfo, bedInfo, maxPeople }: profileProps) => {
   return (
