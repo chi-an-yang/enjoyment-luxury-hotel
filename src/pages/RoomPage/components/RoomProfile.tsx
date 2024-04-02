@@ -5,13 +5,13 @@ import areaInfoImg from '@src/assets/images/areaInfo.png';
 import bedInfoImg from '@src/assets/images/bedInfo.png';
 import maxPeopleImg from '@src/assets/images/maxPeople.png';
 
-type basicProps = {
+type profileProps = {
   areaInfo: string;
   bedInfo: string;
   maxPeople: number;
 };
 
-const BasicInfoWrapper = ({ children }: { children: ReactNode }) => {
+const ProfileWrapper = ({ children }: { children: ReactNode }) => {
   const { palette } = useTheme();
   return (
     <Box
@@ -39,26 +39,26 @@ const BasicInfoWrapper = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const RoomInfoBasic = ({ areaInfo, bedInfo, maxPeople }: basicProps) => {
+const RoomProfile = ({ areaInfo, bedInfo, maxPeople }: profileProps) => {
   return (
     <>
       <RoomTitle title={'房型基本資訊'} />
       <Stack direction="row" spacing={1}>
-        <BasicInfoWrapper>
+        <ProfileWrapper>
           <img src={areaInfoImg} alt={'areaInfo'} />
           <Typography variant="Title_16px_B">{areaInfo}</Typography>
-        </BasicInfoWrapper>
-        <BasicInfoWrapper>
+        </ProfileWrapper>
+        <ProfileWrapper>
           <img src={bedInfoImg} alt={'bedInfo'} />
           <Typography variant="Title_16px_B">{bedInfo}</Typography>
-        </BasicInfoWrapper>
-        <BasicInfoWrapper>
+        </ProfileWrapper>
+        <ProfileWrapper>
           <img src={maxPeopleImg} alt={'maxPeople'} />
           <Typography variant="Title_16px_B">{maxPeople}</Typography>
-        </BasicInfoWrapper>
+        </ProfileWrapper>
       </Stack>
     </>
   );
 };
 
-export default RoomInfoBasic;
+export default RoomProfile;

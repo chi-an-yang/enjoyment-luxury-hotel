@@ -9,7 +9,7 @@ import Footer from '@src/common/Footer';
 import HotelTypography from './components/HotelTypography';
 import TabsComponent from './components/TabsComponent';
 import ToastComponent from './components/ToastComponent';
-import RoomInfoBasic from '../RoomPage/components/RoomInfoBasic';
+import RoomProfile from '../RoomPage/components/RoomProfile';
 import RoomInfo from '../RoomPage/components/RoomInfo';
 
 const ExamplePage = () => {
@@ -49,7 +49,7 @@ const ExamplePage = () => {
           <TabsComponent />
 
           <Divider textAlign="center">RoomInfo</Divider>
-          <RoomInfoBasic areaInfo={'24坪'} bedInfo={'一張大床'} maxPeople={4} />
+          <RoomProfile areaInfo={'24坪'} bedInfo={'一張大床'} maxPeople={4} />
           <RoomInfo title={'layoutInfo'} infos={['市景', '獨立衛浴', '客廳', '書房', '樓層電梯']} />
           <RoomInfo
             title={'facilityInfo'}
