@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-
 import { Box, useTheme, useMediaQuery } from '@mui/material';
 import RoomTitle from './RoomTitle';
 import RoomInfoTitle from './RoomInfoTitle';
@@ -46,7 +45,6 @@ const InfoWrapper = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// TODO infos should be filter isProvide then return string[]
 const RoomInfo = ({ title, infos }: infoProps) => {
   const { breakpoints } = useTheme();
   const isDesktop = useMediaQuery(breakpoints.up('md'));
