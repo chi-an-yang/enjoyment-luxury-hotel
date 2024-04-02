@@ -1,8 +1,7 @@
 import { Stack, Box, Typography, styled } from '@mui/material';
 import RoomTitle from './RoomTitle';
-import areaInfoImg from '@src/assets/images/areaInfo.png';
-import bedInfoImg from '@src/assets/images/bedInfo.png';
-import maxPeopleImg from '@src/assets/images/maxPeople.png';
+import areaInfoImg from '@src/assets/images/areaInfo.svg';
+import { MdBed, MdPerson } from 'react-icons/md';
 
 type profileProps = {
   areaInfo: string;
@@ -14,6 +13,7 @@ const ProfileWrapper = styled(Box)(({ theme }) => ({
   width: '96px',
   height: '96px',
   backgroundColor: theme.palette.neutral[0],
+  color: theme.palette.hotelPrimary[100],
   borderRadius: '1px',
   display: 'flex',
   justifyContent: 'center',
@@ -33,11 +33,11 @@ const RoomProfile = ({ areaInfo, bedInfo, maxPeople }: profileProps) => {
           <Typography variant="Title_16px_B">{areaInfo}</Typography>
         </ProfileWrapper>
         <ProfileWrapper>
-          <img src={bedInfoImg} alt={'bedInfo'} />
+          <MdBed size="24" />
           <Typography variant="Title_16px_B">{bedInfo}</Typography>
         </ProfileWrapper>
         <ProfileWrapper>
-          <img src={maxPeopleImg} alt={'maxPeople'} />
+          <MdPerson size="24" />
           <Typography variant="Title_16px_B">{maxPeople}</Typography>
         </ProfileWrapper>
       </Stack>
