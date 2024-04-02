@@ -17,10 +17,6 @@ const titleMap = {
   amenityInfo: '備品提供',
 };
 
-const getInfoTitle = (title: titleProps) => {
-  return titleMap[title];
-};
-
 const InfoWrapper = ({ children }: { children: ReactNode }) => {
   const { palette } = useTheme();
   return (
@@ -56,7 +52,7 @@ const RoomInfo = ({ title, infos }: infoProps) => {
   const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
     <Box display={'flex'} gap={isDesktop ? 3 : 2} flexDirection={'column'}>
-      <RoomTitle title={getInfoTitle(title)} />
+      <RoomTitle title={titleMap[title]} />
       <InfoWrapper>
         {infos.map((info) => (
           <Box
