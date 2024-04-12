@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { IoMdArrowForward } from 'react-icons/io';
 import { Rooms } from '@src/apis/home';
+import RoomProfile from '../../RoomProfile';
 
 const RoomCardDescription = ({ card }: { card: Rooms }) => {
   const { breakpoints } = useTheme();
@@ -40,6 +41,12 @@ const RoomCardDescription = ({ card }: { card: Rooms }) => {
       >
         {card.description}
       </Typography>
+      <RoomProfile
+        outlined
+        areaInfo={card.areaInfo}
+        bedInfo={card.bedInfo}
+        maxPeople={card.maxPeople}
+      />
       <Box
         width="100%"
         height="2px"
@@ -57,7 +64,6 @@ const RoomCardDescription = ({ card }: { card: Rooms }) => {
         >
           NT$ {card.price.toLocaleString()}
         </Typography>
-
         <Link component={RouterLink} to={`/rooms/${card._id}`}>
           <SvgIcon sx={{ color: (theme: Theme) => `${theme.palette.hotelPrimary[100]}` }}>
             <IoMdArrowForward size={24} />
