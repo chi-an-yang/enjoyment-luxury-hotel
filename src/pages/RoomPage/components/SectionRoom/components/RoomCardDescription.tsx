@@ -22,7 +22,7 @@ const RoomCardDescription = ({ card }: { card: Rooms }) => {
       height={'100%'}
       flex={isDesktop ? '1 0 524px' : '1 0 auto'}
       width={isDesktop ? 'auto' : '100%'}
-      p={isDesktop ? 5 : 2}
+      p={isDesktop ? 5 : '12px'}
       bgcolor={(theme: Theme) => `${theme.palette.neutral[0]}`}
     >
       <Typography
