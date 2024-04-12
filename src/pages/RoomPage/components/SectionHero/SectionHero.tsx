@@ -1,6 +1,6 @@
 import { Container, Grid, Typography, Theme, useTheme, useMediaQuery } from '@mui/material';
 import UiSwiper from '@src/ui-components/UiSwiper';
-import SectionHeroHotelName from './components/SectionHeroHotelName';
+import SectionHeroTitle from './components/SectionHeroTitle';
 import Hero01 from '@src/assets/images/heros/hero_01.jpg';
 import Hero02 from '@src/assets/images/heros/hero_02.jpg';
 import Hero03 from '@src/assets/images/heros/hero_03.jpg';
@@ -59,7 +59,7 @@ const SectionHero = () => {
             top: { xs: '72px', md: 'unset' },
           }}
         >
-          <SectionHeroHotelName />
+          <SectionHeroTitle />
           <Typography
             variant={isDesktop ? 'H1_48px_B' : 'H3_32px_B'}
             sx={{
