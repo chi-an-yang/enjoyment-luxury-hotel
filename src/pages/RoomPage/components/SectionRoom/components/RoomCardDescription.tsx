@@ -51,6 +51,7 @@ const RoomCardDescription = ({ card }: { card: Rooms }) => {
         width="100%"
         height="2px"
         borderRadius="2px"
+        marginBottom={isDesktop ? 0 : 3}
         sx={{
           background: (theme: Theme) =>
             `linear-gradient(90deg, ${theme.palette.hotelPrimary[100]}, ${theme.palette.neutral[0]})`,

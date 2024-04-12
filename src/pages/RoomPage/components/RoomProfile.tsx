@@ -1,4 +1,4 @@
-import { Grid, Box, Typography, styled, BoxProps } from '@mui/material';
+import { Grid, Box, Typography, styled, BoxProps, useMediaQuery } from '@mui/material';
 import RoomTitle from './RoomTitle';
 import areaInfoImg from '@src/assets/images/areaInfo.svg';
 import { MdBed, MdPerson } from 'react-icons/md';
@@ -14,7 +14,9 @@ interface ProfileWrapperProps extends BoxProps {
   outlined: boolean;
 }
 
-const ProfileWrapper = styled(Box)<ProfileWrapperProps>(({ outlined, theme }) => ({
+const ProfileWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'outlined',
+})<ProfileWrapperProps>(({ outlined, theme }) => ({
   width: '96px',
   height: '96px',
   backgroundColor: theme.palette.neutral[0],
@@ -27,7 +29,7 @@ const ProfileWrapper = styled(Box)<ProfileWrapperProps>(({ outlined, theme }) =>
   gap: theme.spacing(1),
   padding: theme.spacing(2),
   border: outlined ? `1px solid ${theme.palette.hotelPrimary[40]}` : 'none',
-  marginBottom: outlined ? '40px' : '0px',
+  marginBottom: outlined ? (useMediaQuery(theme.breakpoints.up('md')) ? '40px' : '24px') : '0px',
 }));
 
 const RoomProfile = ({ outlined = false, areaInfo, bedInfo, maxPeople }: profileProps) => {

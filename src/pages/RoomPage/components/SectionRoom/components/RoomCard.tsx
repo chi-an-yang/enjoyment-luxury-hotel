@@ -19,14 +19,14 @@ const RoomCard = ({ card }: { card: Rooms }) => {
   return (
     <Stack
       width={'100% '}
-      height={'458px'}
+      height={isDesktop ? '458px' : 'auto'}
       direction={isDesktop ? 'row' : 'column'}
-      justifyContent="center"
+      justifyContent={isDesktop ? 'center' : 'flex-start'}
       alignItems="center"
       borderRadius={'20px'}
       overflow={'hidden'}
     >
-      <Grid display={'flex'} width={'calc(1200px - 524px)'} height={'100%'}>
+      <Grid display={'flex'} width={'calc(1200px - 524px)'} height={isDesktop ? '100%' : '200px'}>
         <UiSwiper navigation items={roomList} />
       </Grid>
       <RoomCardDescription card={card} />
