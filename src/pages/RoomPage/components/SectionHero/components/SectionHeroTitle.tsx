@@ -5,8 +5,8 @@ const SectionHeroTitle = () => {
   const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
     <Grid
-      container={isDesktop ? false : true}
-      direction={isDesktop ? 'row' : 'column'}
+      container
+      direction={'column'}
       alignItems={isDesktop ? 'flex-start' : 'center'}
       flex={isDesktop ? '0 1 500px' : 'auto'}
       minWidth={isDesktop ? '290px' : 'auto'}
