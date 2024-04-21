@@ -1,6 +1,6 @@
 import { Grid, Stack, useTheme, Typography } from '@mui/material';
 
-const RoomCalendar = () => {
+const RoomDetailsPageCalendar = () => {
   const { palette } = useTheme();
   return (
     <Grid container width={'398px'} height={'74px'} gap={'8px'} mb={2}>
@@ -26,4 +26,4 @@ const RoomCalendar = () => {
   );
 };
 
-export default RoomCalendar;
+export default RoomDetailsPageCalendar;

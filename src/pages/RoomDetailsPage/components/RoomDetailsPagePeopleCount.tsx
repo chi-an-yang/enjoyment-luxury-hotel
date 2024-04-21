@@ -79,7 +79,7 @@ const Counter = ({ countPeopleNum, setCountPeopleNum }: counterProps) => {
   );
 };
 
-const RoomPeopleCount = ({ peopleNum }: { peopleNum: roomPeopleCountProps }) => {
+const RoomDetailsPagePeopleCount = ({ peopleNum }: { peopleNum: roomPeopleCountProps }) => {
   const { palette } = useTheme();
   const [countPeopleNum, setCountPeopleNum] = useState<number>(peopleNum);
   return (
@@ -96,4 +96,4 @@ const RoomPeopleCount = ({ peopleNum }: { peopleNum: roomPeopleCountProps }) => 
   );
 };
 
-export default RoomPeopleCount;
+export default RoomDetailsPagePeopleCount;

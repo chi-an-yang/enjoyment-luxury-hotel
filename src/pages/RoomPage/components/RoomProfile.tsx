@@ -1,4 +1,4 @@
-import { Stack, Box, Typography, styled } from '@mui/material';
+import { Stack, Box, Typography, styled, useTheme, useMediaQuery } from '@mui/material';
 import RoomTitle from './RoomTitle';
 import areaInfoImg from '@src/assets/images/areaInfo.svg';
 import { MdBed, MdPerson } from 'react-icons/md';
@@ -24,8 +24,10 @@ const ProfileWrapper = styled(Box)(({ theme }) => ({
 }));
 
 const RoomProfile = ({ areaInfo, bedInfo, maxPeople }: profileProps) => {
+  const { breakpoints } = useTheme();
+  const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
-    <>
+    <Stack spacing={isDesktop ? 3 : 2}>
       <RoomTitle title={'房型基本資訊'} />
       <Stack direction="row" spacing={2}>
         <ProfileWrapper>
@@ -41,7 +43,7 @@ const RoomProfile = ({ areaInfo, bedInfo, maxPeople }: profileProps) => {
           <Typography variant="Title_16px_B">{maxPeople}</Typography>
         </ProfileWrapper>
       </Stack>
-    </>
+    </Stack>
   );
 };
 

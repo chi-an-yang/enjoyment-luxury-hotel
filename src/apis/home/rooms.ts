@@ -74,7 +74,6 @@ export const fetchRoomsList = async (): Promise<fetchRoomsListResponse> => {
   return response.data.result;
 };
 export const fetchRoomsById = async (id: string): Promise<fetchRoomsByIdResponse> => {
-  console.log('🚀 ~ fetchRoomsById ~ id:', id);
   const response = await axios.get(`/api/v1/rooms/${id}`);
   return response.data.result;
 };

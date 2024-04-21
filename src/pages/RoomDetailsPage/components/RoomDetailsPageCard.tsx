@@ -1,12 +1,12 @@
 import { Box, Card, CardActions, CardContent, Button, Typography, useTheme } from '@mui/material';
-import RoomCalendar from './RoomCalendar';
-import RoomPeopleCount from './RoomPeopleCount';
+import RoomDetailsPageCalendar from './RoomDetailsPageCalendar';
+import RoomDetailsPagePeopleCount from './RoomDetailsPagePeopleCount';
 
 const RoomDetailsPageCard = () => {
   const { palette } = useTheme();
 
   return (
-    <Card sx={{ maxWidth: 478, height: 620, borderRadius: '20px', p: 5 }}>
+    <Card sx={{ maxWidth: 478, height: 620, borderRadius: '20px', p: 5, position: 'sticky', top: '80px' }}>
       <CardContent sx={{ p: 0 }}>
         <Box borderBottom={`1px solid ${palette.neutral[40]}`} pb={2} mb={5}>
           <Typography variant="H5_24px_B" component={'h5'}>
@@ -19,8 +19,8 @@ const RoomDetailsPageCard = () => {
         <Typography variant="Body_16px_R" component={'p'} mb={5}>
           享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。
         </Typography>
-        <RoomCalendar />
-        <RoomPeopleCount peopleNum={2} /> {/* 人數請默認帶 2 */}
+        <RoomDetailsPageCalendar />
+        <RoomDetailsPagePeopleCount peopleNum={2} /> {/* 人數請默認帶 2 */}
         <Typography variant="H5_24px_B" component={'p'} color={palette.hotelPrimary[100]} mb={5}>
           NT$ 10,000
         </Typography>

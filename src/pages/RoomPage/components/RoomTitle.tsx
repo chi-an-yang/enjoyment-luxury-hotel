@@ -6,9 +6,9 @@ const RoomTitle = ({ title }: { title: string }) => {
   const RoomTitleWrapper = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
-    pl: 2,
+    paddingLeft: '16px',
     position: 'relative',
-    '::before': {
+    '&::before': {
       content: '""',
       position: 'absolute',
       display: 'block',
@@ -18,7 +18,7 @@ const RoomTitle = ({ title }: { title: string }) => {
       width: '4px',
       height: '24px',
       borderRadius: '10px',
-      bgcolor: theme.palette.hotelPrimary[100],
+      backgroundColor: theme.palette.hotelPrimary[100],
     },
   }));
 
