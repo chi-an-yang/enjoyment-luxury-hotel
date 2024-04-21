@@ -121,6 +121,9 @@ const palette: ThemeOptions['palette'] = {
   //   dark: '#C22538',
   //   // contrastText: '#fff',
   // },
+  background: {
+    default: '#F7F2EE'
+  },
   hotelPrimary: {
     120: '#7B6651',
     100: '#BF9D7D',
