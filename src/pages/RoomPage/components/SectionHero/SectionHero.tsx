@@ -40,7 +40,7 @@ const SectionHero = () => {
   return (
     <Container maxWidth={false} disableGutters>
       <Grid container direction="row" justifyContent="center" alignItems="center">
-        <Grid width={'100vw'} height={'100vh'} display="flex">
+        <Grid width={'100vw'} height={'100vh'} maxHeight={'486px'} display="flex">
           <UiSwiper items={herosList} mask={true} />
         </Grid>
         <Grid
