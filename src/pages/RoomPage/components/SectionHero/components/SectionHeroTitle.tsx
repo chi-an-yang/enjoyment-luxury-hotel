@@ -1,7 +1,7 @@
-import { Grid, Typography, Theme, Box, useTheme, useMediaQuery } from '@mui/material';
+import { Grid, Typography, Box, useTheme, useMediaQuery } from '@mui/material';
 
 const SectionHeroTitle = () => {
-  const { breakpoints } = useTheme();
+  const { breakpoints,palette } = useTheme();
   const isDesktop = useMediaQuery(breakpoints.up('md'));
   return (
     <Grid
@@ -13,7 +13,7 @@ const SectionHeroTitle = () => {
       sx={{
         width: isDesktop ? 'auto' : '100%',
         maxWidth: isDesktop ? 'none' : '100vw',
-        color: (theme) => theme.palette.hotelPrimary[100],
+        color:palette.hotelPrimary[100],
       }}
     >
       <Typography
@@ -35,10 +35,10 @@ const SectionHeroTitle = () => {
         height={isDesktop ? '2px' : '84px'}
         borderRadius="2px"
         sx={{
-          background: (theme: Theme) =>
+          background: 
             isDesktop
-              ? `linear-gradient(90deg, ${theme.palette.hotelPrimary[100]}, ${theme.palette.neutral[0]})`
-              : `linear-gradient(180deg, ${theme.palette.hotelPrimary[100]}, ${theme.palette.neutral[0]})`,
+              ? `linear-gradient(90deg, ${palette.hotelPrimary[100]}, ${palette.neutral[0]})`
+              : `linear-gradient(180deg, ${palette.hotelPrimary[100]}, ${palette.neutral[0]})`,
         }}
       />
     </Grid>
